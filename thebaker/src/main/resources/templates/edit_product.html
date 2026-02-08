@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE BAKER - Edit Product</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Pretendard', 'Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brown: '#6B4423',
+                        darkbrown: '#47280e',
+                        black: '#111111',
+                        white: '#FFFFFF',
+                        cream: '#f9f7f2',
+                        danger: '#ff4444',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-cream text-black font-sans h-screen flex items-center justify-center p-4">
+
+<div class="bg-white w-full max-w-md border border-black shadow-xl relative">
+
+    <div class="bg-brown p-6 text-white flex justify-between items-center">
+        <h1 class="text-xl font-bold tracking-widest uppercase">메뉴 수정 (Edit)</h1>
+        <span class="font-mono text-xs opacity-50">ID: <span th:text="${product.id}">1</span></span>
+    </div>
+
+    <form class="p-8 space-y-6">
+
+        <input type="hidden" id="product-id" th:value="${product.id}">
+        <input type="hidden" id="stock" th:value="${product.stockQuantity}">
+
+        <div>
+            <label class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">제품명 (Product Name)</label>
+            <input type="text" id="name" th:value="${product.name}" required
+                   class="w-full bg-gray-50 border-b-2 border-gray-200 p-3 text-lg font-bold focus:border-brown focus:bg-white focus:outline-none transition">
+        </div>
+
+        <div>
+            <label class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">가격 (Price)</label>
+            <div class="relative">
+                <span class="absolute left-3 top-3 text-gray-400 font-bold">₩</span>
+                <input type="number" id="price" th:value="${product.price.intValue()}" required
+                       class="w-full bg-gray-50 border-b-2 border-gray-200 p-3 pl-8 text-lg font-mono font-bold focus:border-brown focus:bg-white focus:outline-none transition">
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-sm font-bold mb-2">사진 변경 (Change Image)</label>
+            <input type="file" id="image-input" accept="image/*" class="w-full border p-2 bg-white">
+        </div>
+
+        <div>
+            <label class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">카테고리 (Category)</label>
+            <div class="relative">
+                <select id="category" class="w-full bg-white border border-gray-300 p-3 font-sans appearance-none focus:border-black focus:outline-none cursor-pointer">
+                    <option value="HARD" th:selected="${product.category == 'HARD'}">🥖 하드계열 (Hard Bread)</option>
+                    <option value="SOFT" th:selected="${product.category == 'SOFT'}">🥯 베이글/소프트 (Soft/Bagel)</option>
+                    <option value="ALL" th:selected="${product.category == 'ALL'}">☕ 매일 (All Day)</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                </div>
+            </div>
+            <p class="text-[10px] text-gray-400 mt-2">* 카테고리에 따라 AI 분석 모델이 달라집니다.</p>
+        </div>
+
+        <div class="flex space-x-3 pt-4">
+            <a href="/staff"
+               class="flex-1 border border-black py-4 text-center text-sm font-bold uppercase hover:bg-gray-100 transition tracking-wide">
+                취소 (Cancel)
+            </a>
+
+            <button type="button" onclick="updateProduct()"
+                    class="flex-1 bg-brown text-white py-4 text-sm font-bold uppercase hover:bg-darkbrown transition tracking-wide shadow-md">
+                저장 (Save)
+            </button>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    async function updateProduct() {
+        // 1. Get Values
+        const id = document.getElementById('product-id').value;
+        const name = document.getElementById('name').value;
+        const price = document.getElementById('price').value;
+        const category = document.getElementById('category').value;
+        const stock = document.getElementById('stock').value;
+        const imageInput = document.getElementById('image-input');
+
+        // 2. Prepare Form Data
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('price', price);
+        formData.append('category', category);
+        formData.append('stockQuantity', stock);
+
+        // 3. Add Image ONLY if user selected one
+        if (imageInput.files[0]) {
+            formData.append('image', imageInput.files[0]);
+        }
+
+        // 4. Send PUT Request
+        try {
+            const res = await fetch(`/api/products/${id}`, {
+                method: 'PUT',
+                body: formData
+            });
+
+            if (res.ok) {
+                alert("수정 완료되었습니다!");
+                window.location.href = "/staff";
+            } else {
+                // READ THE SERVER ERROR MESSAGE
+                const errorText = await res.text();
+                console.error("Server Error:", res.status, errorText);
+                alert(`수정 실패 (Error ${res.status}): ${errorText || 'Check Server Logs'}`);
+            }
+        } catch (e) {
+            console.error(e);
+            alert("시스템 오류 (System Error)");
+        }
+    }
+</script>
+
+</body>
+</html>
