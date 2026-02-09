@@ -28,7 +28,7 @@ graph TD
 ### Tech Stack
 * **Core Backend:** Java 17, Spring Boot 3.2 (Web, JPA, Http Interface)
 * **AI Microservice:** Python 3.11, FastAPI, **Google GenAI SDK**
-* **Models:** Gemini 2.0 Flash (Reasoning) + Scikit-Learn (Fallback Stats)
+* **Models:** Gemini 2.5 Flash (Reasoning) + Scikit-Learn (Fallback Stats)
 * **Data:** PostgreSQL (Prod) / H2 (Dev)
 * **Infrastructure:** Docker, Render (PaaS), GitHub Actions
 
