@@ -35,7 +35,7 @@ graph TD
 ---
 
 ## The "Hybrid AI" Prediction Engine
-Retail prediction requires both **Contextual Reasoning** (e.g., "Rain on a Tuesday usually hurts sales") and **Statistical Safety**. *The Baker* employs a **RAG (Retrieval-Augmented Generation)** pipeline with a deterministic fallback.
+Retail prediction requires both **Contextual Reasoning** (e.g., "Rain on a Monday usually hurts sales") and **Statistical Safety**. *The Baker* employs a **RAG (Retrieval-Augmented Generation)** pipeline with a deterministic fallback.
 
 ### Layer 1: The Generative Agent (Primary)
 * **Architecture:** In-Context Learning (RAG).
