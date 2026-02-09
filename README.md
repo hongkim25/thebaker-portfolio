@@ -1,76 +1,75 @@
-# The Baker: Smart Retail Operations Platform
+# The Baker: Intelligent Retail Operations Platform
 
-> **A production-grade full-stack application that bridges the gap between Customer Experience (CX) and Operational Efficiency.**
+> **A production-grade architecture that bridges Customer Experience (CX) and Operational Efficiency using Hybrid AI.**
 
 ## Project Scope
-Small bakeries face two critical problems: **Customer Friction** (unsure if open, no inventory visibility) and **Operational Waste** (over-production). *The Baker* solves both by unifying them into a single platform:
+Small bakeries face two critical problems: **Demand Volatility** (weather-dependent sales) and **Operational Waste** (perishable inventory). *The Baker* solves both by unifying them into a single platform:
 
-1.  **Customer Portal:** A real-time PWA (Progressive Web App) for digital loyalty points, live stock visibility, and reservations.
-2.  **Staff Dashboard:** An AI-assisted decision support system that uses historical sales data to recommend daily production levels, minimizing food waste.
+1.  **Customer Portal:** A real-time PWA (Progressive Web App) for live inventory visibility, preventing friction ("Is the shop open?").
+2.  **Staff Decision Engine:** A **Hybrid AI Agent** that predicts daily demand using Generative AI, protected by statistical guardrails.
 
 ## Architecture Overview
-The application follows a **Hybrid Monolith** architecture designed for reliability and ease of deployment. It leverages **Java Spring Boot** for robust transaction handling and **Python** for statistical modeling, bridging the two via a lightweight local interface.
+The application implements a **Sidecar Microservice Pattern** to leverage the strengths of two ecosystems: **Java Spring Boot** for transactional stability and **Python FastAPI** for AI inference.
 
 ```mermaid
 graph TD
-    User["Staff / POS"] -->|HTTPS| Controller["Spring Boot Controller"]
-    Controller -->|Read/Write| DB[("H2 / PostgreSQL")]
-    Controller -->|Request Prediction| Service["PredictionService.java"]
+    User["Staff / POS"] -->|HTTPS| Java["Spring Boot (Core)"]
+    Java -->|Read/Write| DB[("PostgreSQL")]
     
-    subgraph "Dual-Core AI Engine"
-        Service -->|Load| JSON["Model Weights (ml_model.json)"]
-        Trainer["Python Script (Scikit-Learn)"] -->|Train & Serialize| JSON
-        CSV["Historical Data"] -->|Feed| Trainer
+    subgraph "Hybrid Intelligence Layer"
+        Java -->|REST / JSON| Python["Python Sidecar (FastAPI)"]
+        Python -->|RAG Context| CSV["Historical Data"]
+        Python -->|Inference| LLM["Google Gemini 2.0 Flash"]
+        
+        Java -.->|Fallback / Circuit Breaker| Local["Local Stats (ml_model.json)"]
     end
 ```
 
 ### Tech Stack
-* **Backend:** Java 17, Spring Boot 3.2 (Web, JPA, Thymeleaf)
-* **Data Science:** Python 3.x, Pandas, Scikit-Learn (Linear Regression)
-* **Database:** H2 (Dev) / PostgreSQL (Prod)
-* **Frontend:** Server-Side Rendering (Thymeleaf) + TailwindCSS
-* **DevOps:** GitHub Actions (CI) -> Render (CD)
+* **Core Backend:** Java 17, Spring Boot 3.2 (Web, JPA, Http Interface)
+* **AI Microservice:** Python 3.11, FastAPI, **Google GenAI SDK**
+* **Models:** Gemini 2.0 Flash (Reasoning) + Scikit-Learn (Fallback Stats)
+* **Data:** PostgreSQL (Prod) / H2 (Dev)
+* **Infrastructure:** Docker, Render (PaaS), GitHub Actions
 
 ---
 
-## The "Dual-Core" Prediction Logic
-Retail inventory management faces two conflicting challenges: **Demand Volatility** (Weather/Day effects) and **Data Sparsity** (Waste events are rare but costly). To solve this, *The Baker* employs a hybrid strategy that decouples demand forecasting from risk assessment.
+## The "Hybrid AI" Prediction Engine
+Retail prediction requires both **Contextual Reasoning** (e.g., "Rain on a Tuesday usually hurts sales") and **Statistical Safety**. *The Baker* employs a **RAG (Retrieval-Augmented Generation)** pipeline with a deterministic fallback.
 
-### Core 1: The Demand Model (Dynamic Regression)
-* **Objective:** Predict Sales Velocity ("How many *can* we sell?").
-* **Algorithm:** Multivariate Linear Regression:
-$$y = \beta_0 + \beta_1x_1 + ... + \beta_nx_n$$
-* **Feature Engineering:**
-    * **Day of Week:** One-hot encoded vectors to capture weekly seasonality (e.g., `Saturday_Boost`).
-    * **Weather:** Categorical mapping (Sunny, Rain, Snow) to impact coefficients.
-    * **Temperature:** Continuous variable to model heat/cold sensitivity.
-* **Logic:** The model calculates a **Base Bias** (Standard Demand) and applies weighted coefficients to generate a dynamic target.
+### Layer 1: The Generative Agent (Primary)
+* **Architecture:** In-Context Learning (RAG).
+* **Workflow:**
+    1.  **Retrieval:** The Python service queries the CSV history to find "Nearest Neighbor" days (e.g., previous rainy Tuesdays).
+    2.  **Augmentation:** It constructs a dynamic prompt containing sales velocity, weather impact, and recent trends.
+    3.  **Generation:** The **Gemini LLM** reasons through the data to produce a prediction *and* a qualitative explanation.
+* **Why LLM?** Unlike standard regression, the LLM understands nuance (e.g., "Sales drop in heavy rain, but rise in light drizzle") without manual feature engineering.
 
-### Core 2: The Risk Model (Sparse Data Handling)
-* **Objective:** Quantify Inventory Risk ("What is the probability of over-production?").
-* **Challenge:** Waste data in small businesses is **Zero-Inflated** (skewed heavily towards 0). A standard regression model treats waste events as outliers, often converging to a "Zero Risk" prediction which is dangerous for cost control.
-* **Solution:** A deterministic **"Active-Day" Risk Scoring** system.
-    * The system filters historical data to isolate only **Active Shelf Days** (days where production > 0).
-    * It calculates a **Waste Risk Score** (Average Loss per Active Day) vs. **Production Velocity** (Average Made).
-
-> **Analyst Note:** We intentionally separated this from the regression model because "Waste" is not a linear function of weather, but a function of operational variance. Using a simple Moving Average on filtered data provided higher recall for risk events than a complex ML model.
+### Layer 2: The Statistical Guardrail (Safety Fallback)
+* **Objective:** Prevent system failure if the AI Service is unreachable or hallucinates.
+* **Mechanism:** A local **Linear Regression Model** (serialized in `ml_model.json`) resides in the Java memory.
+* **Circuit Breaker:**
+    * If the Python Microservice times out (>3s) or returns an error:
+    * The system automatically degrades to the local model: $$y = \beta_0 + \beta_1(Day) + \beta_2(Rain)$$
+    * **Result:** Zero downtime. The shop always gets a number.
 
 ---
 
-## Key Platform Capabilities
+## Key Engineering Highlights
 
-### 1. Real-Time Customer Synchronization (CX)
-Unlike static websites, the customer view is tightly coupled with the backend inventory state to reduce friction.
-* **Live Open/Close Logic:** The store status is automated by server time but includes a "Manager Override" (Circuit Breaker pattern) to instantly close the shop if sold out.
-* **Stock Visibility:** Customers see "Low Stock" warnings in real-time as staff process orders, creating urgency and preventing wasted trips.
+### 1. "Zero-Inflated" Risk Modeling
+Standard AI models struggle with "Waste Data" because it is heavily skewed towards zero (most days have no waste).
+* **Solution:** We decoupled risk from the generative model.
+* **Implementation:** `ml_model.json` stores a pre-calculated **"Waste Risk Score"** based on historical active-day filtering.
+* **Benefit:** The Dashboard shows *Qualitative Risk* (High/Low) separately from *Quantitative Demand* (15 units), giving staff a complete decision matrix.
 
-### 2. "What-If" Simulation Engine (AI)
-The dashboard enables **Real-Time Scenario Planning**. Staff can manually override weather parameters (e.g., switch forecast from "Sunny" to "Rain") which triggers a re-calculation of prediction vectors in memory ($$O(1)$$ complexity), without needing to retrain the underlying model ($$O(N)$$).
+### 2. Real-Time Customer Synchronization
+Unlike static websites, the customer view is tightly coupled with the backend inventory state.
+* **Live Circuit Breaker:** The store status is automated but includes a "Manager Override" to instantly close the digital shop front if physical stock depletes.
 
-### 3. Automated Pipeline (CI/CD)
-* **Continuous Integration:** Every push triggers a build and test suite via GitHub Actions.
-* **Just-in-Time Training:** The Python training script runs as a pre-build step in the pipeline. This ensures that `ml_model.json` (the inference weights) is always synchronized with the latest `history.csv` snapshot before deployment.
+### 3. Automated CI/CD Pipeline
+* **Continuous Integration:** GitHub Actions builds the Java JAR and validates the Python dependencies on every push.
+* **Secret Management:** API Keys are injected via environment variables at runtime, ensuring no credentials exist in the codebase (following **12-Factor App** methodology).
 
 ### 4. Mathematical Transparency
-To build trust with non-technical staff, the system rejects "Black Box" predictions. The UI decomposes the final recommendation into its constituent weights:
-> `Prediction` = `Base (10)` + `Saturday (+2)` + `Rain (-1)` = **11 Units**
+To build trust with non-technical staff, the system rejects "Black Box" predictions. The UI displays the **LLM's Reasoning** (e.g., *"Sales lowered due to heavy rain forecast"*) alongside the number, empowering the baker to agree or disagree.

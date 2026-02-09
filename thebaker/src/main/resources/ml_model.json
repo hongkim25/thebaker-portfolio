@@ -1,5 +1,5 @@
 {
-    "잠봉 베이글 샌드위치": {
+    "SANDWICH A": {
         "base_bias": 12.6,
         "weights": {
             "day_Monday": 1.13,
@@ -15,7 +15,7 @@
         "waste_risk": 0.0,
         "avg_made": 14.1
     },
-    "당근라페베이컨 샌드위치": {
+    "SANDWICH B": {
         "base_bias": 11.1,
         "weights": {
             "day_Monday": 2.2,
@@ -31,7 +31,7 @@
         "waste_risk": 0.0,
         "avg_made": 13.9
     },
-    "바질살라미모짜렐라": {
+    "SANDWICH C": {
         "base_bias": 11.94,
         "weights": {
             "day_Monday": 0.86,
@@ -47,7 +47,7 @@
         "waste_risk": 0.0,
         "avg_made": 13.4
     },
-    "플레인햄치즈 샌드위치": {
+    "SANDWICH D": {
         "base_bias": 9.62,
         "weights": {
             "day_Monday": 0.98,
@@ -63,7 +63,7 @@
         "waste_risk": 0.1,
         "avg_made": 9.8
     },
-    "아메리카노 ICE": {
+    "COFFEE ICE": {
         "base_bias": 8.11,
         "weights": {
             "day_Monday": -0.51,
@@ -79,7 +79,7 @@
         "waste_risk": 0.0,
         "avg_made": 14.8
     },
-    "소프트소금빵": {
+    "BREAD A": {
         "base_bias": 17.65,
         "weights": {
             "day_Monday": -0.78,
@@ -95,7 +95,7 @@
         "waste_risk": 0.0,
         "avg_made": 17.0
     },
-    "카야버터프레첼베이글": {
+    "BREAD B": {
         "base_bias": 8.74,
         "weights": {
             "day_Monday": -0.15,
@@ -111,7 +111,7 @@
         "waste_risk": 0.1,
         "avg_made": 9.0
     },
-    "생식빵": {
+    "BREAD C": {
         "base_bias": 4.67,
         "weights": {
             "day_Monday": 0.94,
@@ -127,7 +127,7 @@
         "waste_risk": 0.0,
         "avg_made": 5.9
     },
-    "초코베이글": {
+    "BREAD D": {
         "base_bias": 8.71,
         "weights": {
             "day_Monday": -0.8,
@@ -143,7 +143,7 @@
         "waste_risk": 0.0,
         "avg_made": 9.8
     },
-    "감자치즈베이글": {
+    "BREAD E": {
         "base_bias": 15.64,
         "weights": {
             "day_Monday": -5.16,
@@ -159,7 +159,7 @@
         "waste_risk": 0.1,
         "avg_made": 10.8
     },
-    "모찌모찌 식빵": {
+    "BREAD F": {
         "base_bias": 5.08,
         "weights": {
             "day_Monday": 2.75,
@@ -175,7 +175,7 @@
         "waste_risk": 0.1,
         "avg_made": 7.3
     },
-    "쪽파베이글 샌드위치": {
+    "SANDWICH E": {
         "base_bias": 6.81,
         "weights": {
             "day_Monday": -0.27,
@@ -191,7 +191,7 @@
         "waste_risk": 0.0,
         "avg_made": 7.3
     },
-    "무화과베이글": {
+    "BAGEL A": {
         "base_bias": 14.54,
         "weights": {
             "day_Monday": -6.71,
@@ -207,23 +207,8 @@
         "waste_risk": 0.1,
         "avg_made": 7.7
     },
-    "에그타르트": {
-        "base_bias": 13.6,
-        "weights": {
-            "day_Monday": -2.7,
-            "day_Tuesday": 0.0,
-            "day_Wednesday": -2.58,
-            "day_Thursday": -1.96,
-            "day_Friday": -0.03,
-            "day_Saturday": 6.63,
-            "day_Sunday": 0.64,
-            "is_rain": -0.42,
-            "temp": -0.03
-        },
-        "waste_risk": 0.1,
-        "avg_made": 12.6
-    },
-    "아메리카노 HOT": {
+
+    "COFFEE HOT": {
         "base_bias": 12.95,
         "weights": {
             "day_Monday": -0.85,
@@ -239,23 +224,8 @@
         "waste_risk": 0.0,
         "avg_made": 8.2
     },
-    "후추소금빵": {
-        "base_bias": 7.51,
-        "weights": {
-            "day_Monday": -0.42,
-            "day_Tuesday": 0.0,
-            "day_Wednesday": -0.26,
-            "day_Thursday": 0.0,
-            "day_Friday": 0.0,
-            "day_Saturday": 0.0,
-            "day_Sunday": 0.68,
-            "is_rain": 0.14,
-            "temp": 0.01
-        },
-        "waste_risk": 0.1,
-        "avg_made": 7.6
-    },
-    "플레인베이글": {
+
+    "BAGEL F": {
         "base_bias": 7.43,
         "weights": {
             "day_Monday": 2.51,
@@ -271,23 +241,8 @@
         "waste_risk": 0.1,
         "avg_made": 9.3
     },
-    "맘모스": {
-        "base_bias": 8.13,
-        "weights": {
-            "day_Monday": -1.07,
-            "day_Tuesday": 0.0,
-            "day_Wednesday": -1.51,
-            "day_Thursday": 0.0,
-            "day_Friday": 0.0,
-            "day_Saturday": 0.0,
-            "day_Sunday": 2.57,
-            "is_rain": -1.07,
-            "temp": 0.04
-        },
-        "waste_risk": 0.0,
-        "avg_made": 8.6
-    },
-    "호두크랜베리베이글": {
+
+    "BAGEL B": {
         "base_bias": 13.72,
         "weights": {
             "day_Monday": -6.36,
@@ -303,23 +258,8 @@
         "waste_risk": 0.1,
         "avg_made": 7.3
     },
-    "통밀잡곡식빵": {
-        "base_bias": 4.68,
-        "weights": {
-            "day_Monday": 0.73,
-            "day_Tuesday": -0.0,
-            "day_Wednesday": 0.3,
-            "day_Thursday": 0.0,
-            "day_Friday": 0.0,
-            "day_Saturday": -2.64,
-            "day_Sunday": 1.61,
-            "is_rain": -0.16,
-            "temp": -0.0
-        },
-        "waste_risk": 0.0,
-        "avg_made": 5.3
-    },
-    "블루베리 베이글": {
+
+    "BAGEL C": {
         "base_bias": 8.17,
         "weights": {
             "day_Monday": 0.13,
@@ -335,23 +275,8 @@
         "waste_risk": 0.1,
         "avg_made": 7.8
     },
-    "고메버터 스콘": {
-        "base_bias": 6.83,
-        "weights": {
-            "day_Monday": -1.01,
-            "day_Tuesday": 0.0,
-            "day_Wednesday": -0.96,
-            "day_Thursday": -0.69,
-            "day_Friday": -0.08,
-            "day_Saturday": 1.95,
-            "day_Sunday": 0.79,
-            "is_rain": 0.56,
-            "temp": 0.03
-        },
-        "waste_risk": 0.3,
-        "avg_made": 7.2
-    },
-    "올리브베이글": {
+
+    "BAGEL D": {
         "base_bias": 8.48,
         "weights": {
             "day_Monday": -0.04,
@@ -367,55 +292,8 @@
         "waste_risk": 0.1,
         "avg_made": 8.0
     },
-    "더블초코스콘": {
-        "base_bias": 4.58,
-        "weights": {
-            "day_Monday": -0.95,
-            "day_Tuesday": -0.0,
-            "day_Wednesday": -0.75,
-            "day_Thursday": -0.19,
-            "day_Friday": 0.08,
-            "day_Saturday": 1.31,
-            "day_Sunday": 0.51,
-            "is_rain": 0.16,
-            "temp": 0.03
-        },
-        "waste_risk": 0.2,
-        "avg_made": 4.9
-    },
-    "바닐라까눌레": {
-        "base_bias": 8.07,
-        "weights": {
-            "day_Monday": -1.43,
-            "day_Tuesday": -0.0,
-            "day_Wednesday": -0.93,
-            "day_Thursday": -0.05,
-            "day_Friday": 0.83,
-            "day_Saturday": 1.48,
-            "day_Sunday": 0.11,
-            "is_rain": 0.56,
-            "temp": -0.02
-        },
-        "waste_risk": 0.2,
-        "avg_made": 7.6
-    },
-    "단팥빵": {
-        "base_bias": 8.76,
-        "weights": {
-            "day_Monday": -0.73,
-            "day_Tuesday": -0.0,
-            "day_Wednesday": -1.29,
-            "day_Thursday": -0.0,
-            "day_Friday": 0.0,
-            "day_Saturday": 0.0,
-            "day_Sunday": 2.02,
-            "is_rain": -0.32,
-            "temp": -0.04
-        },
-        "waste_risk": 0.0,
-        "avg_made": 7.9
-    },
-    "카페라떼 ICE": {
+
+    "LATTE ICE": {
         "base_bias": 2.68,
         "weights": {
             "day_Monday": 0.3,
@@ -431,23 +309,8 @@
         "waste_risk": 0.0,
         "avg_made": 4.4
     },
-    "바닐라빈라떼 ICE": {
-        "base_bias": 2.66,
-        "weights": {
-            "day_Monday": -0.24,
-            "day_Tuesday": 0.0,
-            "day_Wednesday": 0.31,
-            "day_Thursday": -0.28,
-            "day_Friday": 0.08,
-            "day_Saturday": 0.0,
-            "day_Sunday": 0.13,
-            "is_rain": -0.31,
-            "temp": 0.01
-        },
-        "waste_risk": 0.0,
-        "avg_made": 2.7
-    },
-    "애플키위믹스": {
+
+    "DRINK B": {
         "base_bias": 1.41,
         "weights": {
             "day_Monday": -0.11,
@@ -463,7 +326,7 @@
         "waste_risk": 0.0,
         "avg_made": 1.4
     },
-    "착즙 애플": {
+    "DRINK C": {
         "base_bias": 1.64,
         "weights": {
             "day_Monday": -0.21,
@@ -479,7 +342,7 @@
         "waste_risk": 0.0,
         "avg_made": 1.6
     },
-    "바닐라빈라떼 HOT": {
+    "LATTE HOT": {
         "base_bias": 1.72,
         "weights": {
             "day_Monday": -0.17,
@@ -495,87 +358,9 @@
         "waste_risk": 0.0,
         "avg_made": 1.5
     },
-    "카페라떼 HOT": {
-        "base_bias": 3.31,
-        "weights": {
-            "day_Monday": 0.2,
-            "day_Tuesday": -0.0,
-            "day_Wednesday": -0.22,
-            "day_Thursday": 0.19,
-            "day_Friday": -0.27,
-            "day_Saturday": 0.42,
-            "day_Sunday": -0.32,
-            "is_rain": -0.02,
-            "temp": -0.04
-        },
-        "waste_risk": 0.0,
-        "avg_made": 2.6
-    },
-    "크림치즈": {
-        "base_bias": 3.11,
-        "weights": {
-            "day_Monday": -0.09,
-            "day_Tuesday": 0.0,
-            "day_Wednesday": 0.48,
-            "day_Thursday": 0.0,
-            "day_Friday": -0.0,
-            "day_Saturday": -1.69,
-            "day_Sunday": 1.3,
-            "is_rain": 0.07,
-            "temp": -0.03
-        },
-        "waste_risk": 0.0,
-        "avg_made": 3.2
-    },
-    "블루베리 크림치즈": {
-        "base_bias": 2.1,
-        "weights": {
-            "day_Monday": 0.43,
-            "day_Tuesday": 0.0,
-            "day_Wednesday": -0.19,
-            "day_Thursday": -0.94,
-            "day_Friday": 0.0,
-            "day_Saturday": -0.65,
-            "day_Sunday": 1.34,
-            "is_rain": 0.28,
-            "temp": -0.0
-        },
-        "waste_risk": 0.0,
-        "avg_made": 2.6
-    },
-    "바질토마토 크림치즈": {
-        "base_bias": 2.79,
-        "weights": {
-            "day_Monday": 0.66,
-            "day_Tuesday": -0.0,
-            "day_Wednesday": -0.25,
-            "day_Thursday": 0.0,
-            "day_Friday": -0.0,
-            "day_Saturday": -1.39,
-            "day_Sunday": 0.97,
-            "is_rain": 0.12,
-            "temp": -0.01
-        },
-        "waste_risk": 0.0,
-        "avg_made": 3.0
-    },
-    "연하게": {
-        "base_bias": 2.84,
-        "weights": {
-            "day_Monday": -0.41,
-            "day_Tuesday": -0.0,
-            "day_Wednesday": 0.38,
-            "day_Thursday": 0.31,
-            "day_Friday": -0.28,
-            "day_Saturday": 0.0,
-            "day_Sunday": 0.0,
-            "is_rain": -0.41,
-            "temp": -0.05
-        },
-        "waste_risk": 0.0,
-        "avg_made": 2.0
-    },
-    "착즙 오렌지": {
+
+
+    "DRINK D": {
         "base_bias": 1.71,
         "weights": {
             "day_Monday": -0.57,
@@ -591,7 +376,7 @@
         "waste_risk": 0.0,
         "avg_made": 1.9
     },
-    "당근라페치아바타샌드위치": {
+    "SANDWICH I": {
         "base_bias": 9.64,
         "weights": {
             "day_Monday": -8.7,
@@ -607,7 +392,7 @@
         "waste_risk": 0.0,
         "avg_made": 20.2
     },
-    "쉬림프과카몰리샌드위치": {
+    "SANDWICH J": {
         "base_bias": 10.38,
         "weights": {
             "day_Monday": 0.0,
@@ -623,7 +408,7 @@
         "waste_risk": 0.1,
         "avg_made": 16.0
     },
-    "바질 잠봉(루꼴라)": {
+    "SANDWICH L": {
         "base_bias": 5.81,
         "weights": {
             "day_Monday": 0.0,
@@ -639,7 +424,7 @@
         "waste_risk": 0.0,
         "avg_made": 11.3
     },
-    "치아바타 샌드위치": {
+    "SANDWICH K": {
         "base_bias": 39.24,
         "weights": {
             "day_Monday": 110.71,
@@ -655,231 +440,8 @@
         "waste_risk": 0.0,
         "avg_made": 17.0
     },
-    "모짜렐라살라미치즈": {
-        "base_bias": 6.91,
-        "weights": {
-            "day_Monday": -4.65,
-            "day_Tuesday": 0.0,
-            "day_Wednesday": -4.82,
-            "day_Thursday": 2.71,
-            "day_Friday": 3.38,
-            "day_Saturday": 7.95,
-            "day_Sunday": -4.57,
-            "is_rain": -0.25,
-            "temp": -0.04
-        },
-        "waste_risk": 0.0,
-        "avg_made": 10.0
-    },
-    "바게트 잠봉": {
-        "base_bias": 6.9,
-        "weights": {
-            "day_Monday": 0.0,
-            "day_Tuesday": 0.0,
-            "day_Wednesday": -5.94,
-            "day_Thursday": 0.76,
-            "day_Friday": 1.33,
-            "day_Saturday": 3.85,
-            "day_Sunday": 0.0,
-            "is_rain": 0.55,
-            "temp": 0.05
-        },
-        "waste_risk": 0.0,
-        "avg_made": 9.6
-    },
-    "피스타치오햄바게트": {
-        "base_bias": 6.76,
-        "weights": {
-            "day_Monday": 0.0,
-            "day_Tuesday": -0.0,
-            "day_Wednesday": -4.63,
-            "day_Thursday": -0.12,
-            "day_Friday": 0.84,
-            "day_Saturday": 3.9,
-            "day_Sunday": 0.0,
-            "is_rain": 0.53,
-            "temp": -0.03
-        },
-        "waste_risk": 0.0,
-        "avg_made": 7.8
-    },
-    "감자 치즈": {
-        "base_bias": 7.74,
-        "weights": {
-            "day_Monday": -6.17,
-            "day_Tuesday": 0.0,
-            "day_Wednesday": 0.0,
-            "day_Thursday": 1.11,
-            "day_Friday": 1.12,
-            "day_Saturday": 3.93,
-            "day_Sunday": 0.0,
-            "is_rain": 0.19,
-            "temp": -0.03
-        },
-        "waste_risk": 0.1,
-        "avg_made": 8.9
-    },
-    "크렌베리닭가슴살샌드위치": {
-        "base_bias": 7.29,
-        "weights": {
-            "day_Monday": 0.0,
-            "day_Tuesday": 0.0,
-            "day_Wednesday": -5.71,
-            "day_Thursday": 0.6,
-            "day_Friday": 0.85,
-            "day_Saturday": 4.26,
-            "day_Sunday": 0.0,
-            "is_rain": -0.22,
-            "temp": -0.02
-        },
-        "waste_risk": 0.0,
-        "avg_made": 8.7
-    },
-    "단호박 크림치즈": {
-        "base_bias": 5.38,
-        "weights": {
-            "day_Monday": 0.0,
-            "day_Tuesday": 0.0,
-            "day_Wednesday": -4.49,
-            "day_Thursday": 0.76,
-            "day_Friday": 1.06,
-            "day_Saturday": 2.67,
-            "day_Sunday": 0.0,
-            "is_rain": -0.33,
-            "temp": 0.02
-        },
-        "waste_risk": 0.0,
-        "avg_made": 7.0
-    },
-    "소금빵": {
-        "base_bias": 12.46,
-        "weights": {
-            "day_Monday": 0.0,
-            "day_Tuesday": 0.0,
-            "day_Wednesday": 0.0,
-            "day_Thursday": 2.73,
-            "day_Friday": 2.5,
-            "day_Saturday": 3.54,
-            "day_Sunday": -8.77,
-            "is_rain": 0.06,
-            "temp": 0.06
-        },
-        "waste_risk": 0.2,
-        "avg_made": 15.9
-    },
-    "소세지빵": {
-        "base_bias": 9.58,
-        "weights": {
-            "day_Monday": 0.0,
-            "day_Tuesday": 0.0,
-            "day_Wednesday": 0.0,
-            "day_Thursday": -0.51,
-            "day_Friday": -0.44,
-            "day_Saturday": 0.95,
-            "day_Sunday": 0.0,
-            "is_rain": 0.17,
-            "temp": -0.1
-        },
-        "waste_risk": 0.0,
-        "avg_made": 7.6
-    },
-    "무화과 크림치즈 사워도우": {
-        "base_bias": 4.29,
-        "weights": {
-            "day_Monday": 0.0,
-            "day_Tuesday": -0.0,
-            "day_Wednesday": -4.16,
-            "day_Thursday": 0.65,
-            "day_Friday": 0.65,
-            "day_Saturday": 2.85,
-            "day_Sunday": 0.0,
-            "is_rain": 0.1,
-            "temp": 0.03
-        },
-        "waste_risk": 0.1,
-        "avg_made": 6.1
-    },
-    "앙버터": {
-        "base_bias": 6.65,
-        "weights": {
-            "day_Monday": 0.0,
-            "day_Tuesday": -0.0,
-            "day_Wednesday": 0.0,
-            "day_Thursday": -1.22,
-            "day_Friday": -0.97,
-            "day_Saturday": 2.2,
-            "day_Sunday": -0.0,
-            "is_rain": 0.55,
-            "temp": 0.03
-        },
-        "waste_risk": 0.0,
-        "avg_made": 7.2
-    },
-    "고구마크림치즈사워도우": {
-        "base_bias": 4.87,
-        "weights": {
-            "day_Monday": 0.0,
-            "day_Tuesday": 0.0,
-            "day_Wednesday": -4.09,
-            "day_Thursday": 0.54,
-            "day_Friday": 0.73,
-            "day_Saturday": 2.82,
-            "day_Sunday": 0.0,
-            "is_rain": -0.1,
-            "temp": 0.01
-        },
-        "waste_risk": 0.0,
-        "avg_made": 6.2
-    },
-    "바게트": {
-        "base_bias": 2.61,
-        "weights": {
-            "day_Monday": 0.0,
-            "day_Tuesday": -0.0,
-            "day_Wednesday": -1.84,
-            "day_Thursday": 0.65,
-            "day_Friday": 0.3,
-            "day_Saturday": 0.9,
-            "day_Sunday": 0.0,
-            "is_rain": 0.26,
-            "temp": 0.02
-        },
-        "waste_risk": 0.0,
-        "avg_made": 3.5
-    },
-    "크로와상": {
-        "base_bias": 4.85,
-        "weights": {
-            "day_Monday": -0.4,
-            "day_Tuesday": -0.0,
-            "day_Wednesday": -1.11,
-            "day_Thursday": -0.44,
-            "day_Friday": -0.16,
-            "day_Saturday": 1.08,
-            "day_Sunday": 1.03,
-            "is_rain": 0.54,
-            "temp": -0.02
-        },
-        "waste_risk": 0.1,
-        "avg_made": 4.5
-    },
-    "올리브 치즈 치아바타": {
-        "base_bias": 3.97,
-        "weights": {
-            "day_Monday": -3.12,
-            "day_Tuesday": -0.0,
-            "day_Wednesday": -3.26,
-            "day_Thursday": 2.59,
-            "day_Friday": 2.88,
-            "day_Saturday": 3.16,
-            "day_Sunday": -2.24,
-            "is_rain": -0.11,
-            "temp": 0.02
-        },
-        "waste_risk": 0.0,
-        "avg_made": 7.0
-    },
-    "대파 사워도우": {
+
+    "BREAD Y": {
         "base_bias": 3.0,
         "weights": {
             "day_Monday": 0.0,
@@ -895,7 +457,7 @@
         "waste_risk": 0.0,
         "avg_made": 2.9
     },
-    "뺑오쇼콜라": {
+    "BREAD X": {
         "base_bias": 4.95,
         "weights": {
             "day_Monday": -0.73,
@@ -911,7 +473,7 @@
         "waste_risk": 0.2,
         "avg_made": 5.5
     },
-    "미니페스츄리식빵": {
+    "BREAD W": {
         "base_bias": 6.97,
         "weights": {
             "day_Monday": 5.1,
@@ -927,7 +489,7 @@
         "waste_risk": 0.1,
         "avg_made": 5.1
     },
-    "호두 크랜베리 사워도우": {
+    "BREAD V": {
         "base_bias": 2.56,
         "weights": {
             "day_Monday": 0.0,
@@ -943,7 +505,7 @@
         "waste_risk": 0.1,
         "avg_made": 2.5
     },
-    "사워도우": {
+    "BREAD U": {
         "base_bias": 1.68,
         "weights": {
             "day_Monday": -0.76,
@@ -959,7 +521,7 @@
         "waste_risk": 0.0,
         "avg_made": 1.9
     },
-    "치아바타": {
+    "BREAD T": {
         "base_bias": 3.1,
         "weights": {
             "day_Monday": 0.0,
@@ -975,7 +537,7 @@
         "waste_risk": 0.0,
         "avg_made": 3.1
     },
-    "마르티넬리 애플주스": {
+    "DRINK A": {
         "base_bias": 1.65,
         "weights": {
             "day_Monday": -0.14,
@@ -991,23 +553,7 @@
         "waste_risk": 0.0,
         "avg_made": 1.6
     },
-    "샷 추가": {
-        "base_bias": 1.0,
-        "weights": {
-            "day_Monday": 0.0,
-            "day_Tuesday": 0.0,
-            "day_Wednesday": 0.0,
-            "day_Thursday": 0.0,
-            "day_Friday": 0.0,
-            "day_Saturday": 0.0,
-            "day_Sunday": 0.0,
-            "is_rain": 0.0,
-            "temp": 0.0
-        },
-        "waste_risk": 0.0,
-        "avg_made": 0.9
-    },
-    "모짜렐라바질토마토": {
+    "BREAD S": {
         "base_bias": 5.05,
         "weights": {
             "day_Monday": 0.0,
@@ -1023,7 +569,7 @@
         "waste_risk": 0.0,
         "avg_made": 4.3
     },
-    "피칸카라멜휘낭시에": {
+    "BREAD R": {
         "base_bias": 4.1,
         "weights": {
             "day_Monday": -0.12,
@@ -1039,7 +585,7 @@
         "waste_risk": 0.2,
         "avg_made": 4.1
     },
-    "솔티드초코휘낭시에": {
+    "BREAD Q": {
         "base_bias": 3.75,
         "weights": {
             "day_Monday": -0.15,
@@ -1055,7 +601,7 @@
         "waste_risk": 0.1,
         "avg_made": 3.7
     },
-    "플레인휘낭시에": {
+    "BREAD AA": {
         "base_bias": 3.44,
         "weights": {
             "day_Monday": -0.27,
@@ -1071,7 +617,7 @@
         "waste_risk": 0.1,
         "avg_made": 3.5
     },
-    "몽블랑": {
+    "BREAD BB": {
         "base_bias": 4.27,
         "weights": {
             "day_Monday": 0.0,
@@ -1087,7 +633,7 @@
         "waste_risk": 0.1,
         "avg_made": 3.7
     },
-    "아몬드 크로와상": {
+    "BREAD CC": {
         "base_bias": 0.45,
         "weights": {
             "day_Monday": -0.11,
@@ -1103,7 +649,7 @@
         "waste_risk": 0.1,
         "avg_made": 1.4
     },
-    "치즈 베이글": {
+    "BAGEL E": {
         "base_bias": 1.0,
         "weights": {
             "day_Monday": 0.0,
@@ -1119,7 +665,7 @@
         "waste_risk": 0.0,
         "avg_made": 1.0
     },
-    "썬드라이바질토마토": {
+    "BREAD DD": {
         "base_bias": 7.68,
         "weights": {
             "day_Monday": 1.36,
@@ -1135,7 +681,7 @@
         "waste_risk": 0.4,
         "avg_made": 6.9
     },
-    "우유크림소금빵": {
+    "BREAD Z": {
         "base_bias": 12.16,
         "weights": {
             "day_Monday": 1.01,
@@ -1151,7 +697,7 @@
         "waste_risk": 0.0,
         "avg_made": 9.9
     },
-    "블랙어니언 베이글": {
+    "BAGEL G": {
         "base_bias": 4.1,
         "weights": {
             "day_Monday": -0.73,
@@ -1167,7 +713,7 @@
         "waste_risk": 0.5,
         "avg_made": 3.4
     },
-    "소금베이글": {
+    "BAGEL H": {
         "base_bias": 11.76,
         "weights": {
             "day_Monday": -0.31,
@@ -1183,7 +729,7 @@
         "waste_risk": 0.2,
         "avg_made": 10.2
     },
-    "닭가슴살 포카치아": {
+    "SANDWICH F": {
         "base_bias": 5.61,
         "weights": {
             "day_Monday": 0.0,
@@ -1199,7 +745,7 @@
         "waste_risk": 0.4,
         "avg_made": 5.2
     },
-    "당근라페포카치아": {
+    "BREAD H": {
         "base_bias": 8.8,
         "weights": {
             "day_Monday": 0.0,
@@ -1215,7 +761,7 @@
         "waste_risk": 0.2,
         "avg_made": 6.8
     },
-    "얼그레이스콘": {
+    "BREAD G": {
         "base_bias": 2.67,
         "weights": {
             "day_Monday": -0.27,
@@ -1231,7 +777,7 @@
         "waste_risk": 1.0,
         "avg_made": 2.7
     },
-    "씨나핀": {
+    "BREAD I": {
         "base_bias": 3.54,
         "weights": {
             "day_Monday": 0.86,
@@ -1247,7 +793,7 @@
         "waste_risk": 0.5,
         "avg_made": 2.9
     },
-    "버섯크림치즈포카치아": {
+    "BREAD J": {
         "base_bias": 4.99,
         "weights": {
             "day_Monday": 0.0,
@@ -1263,7 +809,7 @@
         "waste_risk": 0.1,
         "avg_made": 5.2
     },
-    "바질 토마토": {
+    "BREAD K": {
         "base_bias": 3.78,
         "weights": {
             "day_Monday": 0.0,
@@ -1279,7 +825,7 @@
         "waste_risk": 0.4,
         "avg_made": 3.2
     },
-    "팥밤 사워도우": {
+    "BREAD L": {
         "base_bias": 4.48,
         "weights": {
             "day_Monday": 0.0,
@@ -1295,7 +841,7 @@
         "waste_risk": 0.7,
         "avg_made": 3.6
     },
-    "딸기 치아바타": {
+    "BREAD M": {
         "base_bias": 4.56,
         "weights": {
             "day_Monday": 0.0,
@@ -1311,7 +857,7 @@
         "waste_risk": 0.3,
         "avg_made": 4.1
     },
-    "스위트 잠봉": {
+    "BREAD N": {
         "base_bias": 3.96,
         "weights": {
             "day_Monday": 0.0,
@@ -1327,7 +873,7 @@
         "waste_risk": 0.2,
         "avg_made": 4.2
     },
-    "BLT.샌드위치": {
+    "SANDWICH G": {
         "base_bias": 4.32,
         "weights": {
             "day_Monday": 0.0,
@@ -1343,7 +889,7 @@
         "waste_risk": 0.2,
         "avg_made": 4.9
     },
-    "카프레제 샌드위치": {
+    "SANDWICH H": {
         "base_bias": 4.44,
         "weights": {
             "day_Monday": 0.0,
@@ -1359,7 +905,7 @@
         "waste_risk": 0.1,
         "avg_made": 4.4
     },
-    "체다치즈 고구마 사워도우": {
+    "BREAD O": {
         "base_bias": 5.01,
         "weights": {
             "day_Monday": 0.0,
@@ -1375,7 +921,7 @@
         "waste_risk": 0.6,
         "avg_made": 4.4
     },
-    "버섯리코타 포카치아": {
+    "BREAD P": {
         "base_bias": 3.6,
         "weights": {
             "day_Monday": 0.0,
