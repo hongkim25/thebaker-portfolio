@@ -1,0 +1,11 @@
+pandas
+numpy
+xgboost
+torch
+fastapi
+uvicorn
+langgraph
+pydantic
+google-generativeai
+pytest
+httpx

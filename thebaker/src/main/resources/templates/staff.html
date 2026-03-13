@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/icon-192.png" type="image/png">
+    <title>THE BAKER - Staff Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Pretendard', 'Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        brown: '#6B4423',
+                        darkbrown: '#47280e',
+                        black: '#111111',
+                        white: '#FFFFFF',
+                        cream: '#f9f7f2',
+                        danger: '#ff4444',
+                        success: '#00cc66'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-cream text-black font-sans h-screen flex flex-col overflow-hidden">
+
+<header class="h-14 border-b border-black flex justify-between items-center px-4 md:px-6 bg-white shrink-0">
+    <div class="flex items-center space-x-4">
+        <button id="statusBtn" onclick="toggleShop()" class="flex items-center space-x-2 px-3 py-1 rounded-full border border-transparent hover:border-black transition">
+            <div id="statusDot" class="w-3 h-3 bg-gray-400 rounded-full"></div>
+            <span id="statusText" class="text-lg tracking-normal font-bold tracking-[0.2em] uppercase hidden md:inline">확인중...</span>
+        </button>
+
+        <button id="resBtn" onclick="toggleReservation()" class="flex items-center space-x-2 px-3 py-1 rounded-full border border-transparent hover:border-black transition ml-2 border-l border-gray-200 pl-4">
+            <div id="resDot" class="w-3 h-3 bg-gray-400 rounded-full"></div>
+            <span id="resText" class="text-lg tracking-normal font-bold tracking-[0.2em] uppercase hidden md:inline">예약: --</span>
+        </button>
+    </div>
+    <div class="flex items-center space-x-4">
+        <button onclick="openProductModal()" class="text-xs font-bold uppercase border border-black px-3 py-1 hover:bg-brown hover:text-white transition">
+            + 새 상품 등록
+        </button>
+        <div class="font-mono text-xs" id="clock">--:--</div>
+    </div>
+</header>
+
+<main class="flex-1 flex flex-col md:flex-row overflow-hidden relative">
+
+    <section class="flex-1 overflow-y-auto p-4 md:p-6 space-y-8">
+        <div>
+            <div class="flex justify-between items-end mb-4">
+                <h2 class="text-lg font-bold tracking-tight uppercase text-brown">재고 현황</h2>
+                <button onclick="loadInventory()" class="text-[11px] uppercase tracking-tight text-gray-500 hover:text-black">새로고침</button>
+            </div>
+            <div id="inventory-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 pb-24 md:pb-0">
+            </div>
+        </div>
+
+        <div>
+            <div class="flex justify-between items-end mb-4 pt-8 border-t border-black/10">
+                <h2 class="text-lg font-bold tracking-tight uppercase text-brown">새로운 예약</h2>
+                <button onclick="loadOrders()" class="text-[11px] uppercase tracking-wide text-gray-400 hover:text-black">새 예약 확인</button>
+            </div>
+            <div id="order-list" class="space-y-4">
+                <div class="text-gray-400 text-sm">새로운 주문이 없습니다.</div>
+            </div>
+        </div>
+
+        <h2 class="text-lg font-bold tracking-tight uppercase text-brown mb-1">
+            AI 시뮬레이션 설정
+        </h2>
+        <div class="text-brown p-6 rounded-xl mb-1">
+            <form method="get" action="/staff" class="flex flex-wrap items-center gap-4">
+
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs text-black font-bold uppercase h-4">
+                        내일 날씨
+                    </label>
+                    <select
+                            name="weather"
+                            class="border border-gray-600 text-brown px-4 h-10 rounded w-30
+                       focus:outline-none focus:border-brown">
+                        <option value="Sunny" th:selected="${param.weather == 'Sunny'}">☀️ 맑음</option>
+                        <option value="Cloudy" th:selected="${param.weather == 'Cloudy'}">☁️ 흐림</option>
+                        <option value="Rain" th:selected="${param.weather == 'Rain'}">☔ 비</option>
+                        <option value="Snow" th:selected="${param.weather == 'Snow'}">❄️ 눈</option>
+                    </select>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs text-black font-bold uppercase h-4">
+                        내일 기온 (°C)
+                    </label>
+                    <input
+                            type="number"
+                            name="temp"
+                            step="0.1"
+                            value="20.0"
+                            th:value="${param.temp != null} ? ${param.temp} : 20.0"
+                            class="border border-gray-600 text-brown px-4 h-10 rounded w-30
+                       focus:outline-none focus:border-brown text-center
+                       [appearance:textfield]
+                       [&::-webkit-inner-spin-button]:appearance-none
+                       [&::-webkit-outer-spin-button]:appearance-none">
+                </div>
+
+                <div class="flex flex-col gap-1">
+                    <div class="h-4"></div>
+                    <button
+                            type="submit"
+                            class="bg-brown hover:bg-darkbrown text-white font-bold h-10 px-6
+                       rounded transition flex items-center justify-center gap-1">
+                        업데이트
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-3">
+
+            <div class="bg-darkbrown text-white p-4 rounded-xl flex justify-between items-center mb-0">
+                <div>
+                    <div class="text-xl text-white-400 uppercase mb-5">AI 분석</div>
+                    <div class="font-bold text-2xl">
+                        내일 타겟: <span class="text-gray-400 mb-6" th:text=" ${targetDay} ">내일</span>
+                    </div>
+                    <div class="text-lg">Dual-Core AI (판매 예측 + 폐기 위험)</div>
+                </div>
+            </div>
+
+            <div th:each="item : ${report}" class="bg-white p-5 rounded-xl border border-gray-200 relative overflow-hidden group hover:border-brown transition">
+
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="font-bold text-lg" th:text="${item.productName}">Bagel</h3>
+                    <span th:classappend="${item.getColor() == 'green'} ? 'bg-green-100 text-green-700' :
+                             (${item.getColor() == 'red'} ? 'bg-red-100 text-red-600' : 'bg-gray-100 text-gray-500')"
+                          class="px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wide">
+                        <span th:text="${item.status}">Normal</span>
+                    </span>
+                </div>
+
+                <div class="flex items-baseline gap-2 mb-4">
+                    <span class="text-4xl font-black text-brown" th:text="${item.recommended}">0</span>
+                    <span class="text-sm font-bold text-gray-400">개 예측</span>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-3 text-xs space-y-2 border border-gray-100">
+
+                    <div class="flex justify-between text-gray-500">
+                        <span>기본 판매</span>
+                        <span class="font-mono font-bold" th:text="${#numbers.formatDecimal(item.baseScore, 1, 1)}">10.0</span>
+                    </div>
+
+                    <div class="flex justify-between" th:classappend="${item.dayEffect > 0} ? 'text-green-600' : (${item.dayEffect < 0} ? 'text-red-500' : 'text-gray-400')">
+                        <span>요일 효과</span>
+                        <span class="font-mono font-bold" th:text="${item.dayEffect > 0 ? '+' : ''} + ${#numbers.formatDecimal(item.dayEffect, 1, 1)}">+2.0</span>
+                    </div>
+
+                    <div class="flex justify-between" th:if="${item.rainEffect != 0}" th:classappend="${item.rainEffect > 0} ? 'text-green-600' : 'text-red-500'">
+                        <span>날씨(눈/비) 효과</span>
+                        <span class="font-mono font-bold" th:text="${item.rainEffect > 0 ? '+' : ''} + ${#numbers.formatDecimal(item.rainEffect, 1, 1)}">-1.5</span>
+                    </div>
+
+                    <div class="flex justify-between" th:if="${item.tempEffect != 0}" th:classappend="${item.tempEffect > 0} ? 'text-green-600' : 'text-red-500'">
+                        <span>기온 영향</span>
+                        <span class="font-mono font-bold" th:text="${item.tempEffect > 0 ? '+' : ''} + ${#numbers.formatDecimal(item.tempEffect, 1, 1)}">-0.2</span>
+                    </div>
+
+                    <div class="pt-2 mt-2 border-t border-gray-200" th:if="${item.wasteRisk > 0.0}">
+                        <div class="flex justify-between items-center text-xs text-red-500 font-bold">
+                            <span class="flex items-center gap-1">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                                평균 폐기량
+                            </span>
+                                                <span class="font-mono">
+                                -<span th:text="${#numbers.formatDecimal(item.wasteRisk, 1, 1)}">2.0</span>개
+                            </span>
+                                            </div>
+                                            <div class="flex justify-between items-center text-[10px] text-gray-400 mt-1">
+                                                <span>(평균 생산량 대비)</span>
+                                                <span class="font-mono">
+                                <span th:text="${#numbers.formatDecimal(item.avgMade, 1, 1)}">20.0</span>개 생산 중
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <aside class="w-full md:w-80 border-t md:border-t-0 md:border-l border-black bg-white flex flex-col shrink-0 h-auto md:h-full">
+
+        <div class="p-6 border-b border-black bg-white">
+            <h3 class="text-xs font-bold tracking-tight uppercase text-gray-800 mb-4">결제 및 포인트 적립</h3>
+            <div class="space-y-3">
+                <input type="tel" id="phone" placeholder="핸드폰 번호 (010-0000-0000)" autofocus
+                       class="w-full bg-gray-50 border border-gray-200 p-3 text-sm font-sans focus:border-black focus:outline-none rounded-sm font-semibold mb-3">
+
+                <input type="text" id="amount" placeholder="결제 금액 (₩)" inputmode="numeric"
+                       oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',');"
+                       class="w-full bg-gray-50 border border-gray-200 p-3 text-sm font-sans focus:border-black focus:outline-none rounded-sm font-semibold mb-3">
+
+                <input type="number" id="usePoints" placeholder="사용할 포인트 (선택사항)"
+                       class="w-full bg-cream border border-gray-200 p-3 text-sm font-sans focus:border-brown focus:outline-none rounded-sm text-brown">
+
+                <div class="relative">
+                    <select id="paymentMethod"
+                            class="w-full bg-white border border-gray-200 p-3 text-sm font-sans appearance-none focus:border-black focus:outline-none rounded-sm cursor-pointer">
+                        <option value="CARD">카드 결제 (3% 적립)</option>
+                        <option value="CASH">현금 결제 (3% 적립)</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                </div>
+
+                <button onclick="processTransaction()"
+                        class="w-full bg-brown text-white py-3 text-base font-bold uppercase tracking-wide hover:bg-darkbrown transition rounded-sm">
+                    결제 완료
+                </button>
+
+                <p id="pointMsg" class="text-center text-xs font-mono h-4 text-success mt-2"></p>
+            </div>
+        </div>
+
+        <div class="hidden md:block flex-1 p-4 bg-gray-50 overflow-y-auto">
+            <h3 class="text-xs font-bold tracking-tight uppercase text-gray-500 mb-4">시스템 기록</h3>
+            <div id="logs" class="space-y-2"></div>
+        </div>
+    </aside>
+
+</main>
+
+<div id="product-modal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center backdrop-blur-sm">
+    <div class="bg-white p-8 w-96 shadow-2xl relative">
+        <button onclick="closeProductModal()" class="absolute top-4 right-4 text-xl font-bold">&times;</button>
+        <h2 class="text-xl font-bold mb-6">새 상품 등록</h2>
+        <div class="space-y-4">
+            <input id="new-name" placeholder="제품명 (예: 소금빵)" class="w-full border-b border-black p-2 outline-none">
+            <input id="new-price" type="number" placeholder="가격 (₩)" class="w-full border-b border-black p-2 outline-none">
+
+            <label class="block text-sm font-bold text-gray-500">제품 이미지</label>
+            <input id="new-image" type="file" accept="image/*" class="w-full text-sm text-gray-500">
+
+            <select id="new-category" class="w-full border-b border-black p-2 outline-none bg-white">
+                <option value="HARD">하드계열 (목-토)</option>
+                <option value="SOFT">베이글 (일-수)</option>
+                <option value="ALL">매일</option>
+            </select>
+            <input id="new-stock" type="number" placeholder="초기 수량" class="w-full border-b border-black p-2 outline-none">
+            <button onclick="createNewProduct()" class="w-full bg-brown text-white py-3 font-bold mt-4">생성하기</button>
+        </div>
+    </div>
+</div>
+
+<audio id="alarm-sound" src="/sounds/reservation-alert.mp3" preload="auto"></audio>
+
+<div id="alarm-btn" onclick="enableAlarm()" class="fixed bottom-6 right-6 bg-brown text-white px-6 py-4 rounded-full cursor-pointer animate-bounce z-50 font-bold flex items-center gap-2">
+    <span>🔔</span>
+    <span>주문 알림 켜기 (클릭)</span>
+</div>
+
+<script>
+    // --- 1. CLOCK ---
+    setInterval(() => {
+        document.getElementById('clock').innerText = new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'});
+    }, 1000);
+
+    // --- 2. STATUS LOGIC ---
+    async function loadStatus() {
+        try {
+            const res = await fetch('/api/staff/status');
+            if(res.ok) {
+                const data = await res.json();
+                updateStatusUI(data.open);
+                updateReservationUI(data.reservationOpen);
+            }
+        } catch(e) { console.error("Status API Error", e); }
+    }
+
+    async function toggleShop() {
+        const btnText = document.getElementById('statusText').innerText;
+        const isCurrentlyOpen = btnText.includes("OPEN");
+
+        try {
+            const res = await fetch('/api/staff/status', {
+                method: 'POST', headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ open: !isCurrentlyOpen })
+            });
+            if(res.ok) {
+                updateStatusUI(!isCurrentlyOpen);
+                addLog(isCurrentlyOpen ? "매장을 닫았습니다" : "매장을 오픈했습니다");
+            }
+        } catch(e) { alert("Error connecting to server"); }
+    }
+
+    function updateStatusUI(isOpen) {
+        const dot = document.getElementById('statusDot');
+        const text = document.getElementById('statusText');
+
+        if(isOpen) {
+            text.innerText = "OPEN";
+            dot.classList.remove('bg-danger', 'bg-gray-400');
+            dot.classList.add('bg-success', 'animate-pulse');
+        } else {
+            text.innerText = "CLOSED";
+            dot.classList.remove('bg-success', 'animate-pulse');
+            dot.classList.add('bg-danger');
+        }
+    }
+
+    // --- NEW: RESERVATION TOGGLE LOGIC ---
+    async function toggleReservation() {
+        const btnText = document.getElementById('resText').innerText;
+        const isCurrentlyOpen = btnText.includes("ON");
+
+        try {
+            const res = await fetch('/api/staff/reservation-status', {
+                method: 'POST', 
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ open: !isCurrentlyOpen })
+            });
+            if(res.ok) {
+                const data = await res.json();
+                updateReservationUI(data.reservationOpen);
+                addLog(data.reservationOpen ? "예약창을 열었습니다 (12:00 PM)" : "예약창을 닫았습니다");
+            }
+        } catch(e) { alert("Error connecting to server"); }
+    }
+
+    function updateReservationUI(isOpen) {
+        const dot = document.getElementById('resDot');
+        const text = document.getElementById('resText');
+
+        if(isOpen) {
+            text.innerText = "예약: ON";
+            dot.classList.remove('bg-danger', 'bg-gray-400');
+            dot.classList.add('bg-success', 'animate-pulse');
+        } else {
+            text.innerText = "예약: OFF";
+            dot.classList.remove('bg-success', 'animate-pulse');
+            dot.classList.add('bg-danger');
+        }
+    }
+
+    // --- 3. INVENTORY LOGIC ---
+    async function loadInventory() {
+        try {
+            const res = await fetch('/api/products');
+            const products = await res.json();
+            renderGrid(products);
+        } catch(e) { console.error(e); }
+    }
+
+    function renderGrid(products) {
+        const container = document.getElementById('inventory-grid');
+
+        // 1. Sort Logic (Drinks Last + Korean Ga-Na-Da)
+        products.sort((a,b) => {
+             const drinks = ["커피", "라떼", "아메리카노"];
+             const isA = drinks.some(k => a.name.includes(k));
+             const isB = drinks.some(k => b.name.includes(k));
+             if(isA && !isB) return 1;
+             if(!isA && isB) return -1;
+             return a.name.localeCompare(b.name, 'ko');
+        });
+
+        container.innerHTML = products.map(p => `
+            <div class="bg-white border border-gray-200 p-1.5 relative group hover:border-black transition shadow-sm flex flex-col justify-between min-h-[140px]">
+
+                <div class="w-full">
+                    <div class="absolute top-1 right-1 flex items-center space-x-1 z-10 bg-white/90 px-1 rounded">
+                        <a href="/product/edit/${p.id}" class="text-[10px] text-gray-400 hover:text-black uppercase">수정</a>
+                        <button onclick="deleteProduct(${p.id})" class="text-[10px] text-gray-400 hover:text-danger uppercase">삭제</button>
+                    </div>
+
+                    <div class="mt-4 text-center">
+                        <span class="text-[16px] font-bold text-black uppercase tracking-tight leading-none">${p.name}</span>
+                    </div>
+                </div>
+
+                <div class="flex-1 flex items-center justify-center my-1">
+                    <span class="font-mono text-2xl font-black text-black tracking-tighter" id="display-${p.id}">${p.stockQuantity}</span>
+                </div>
+
+                <div class="w-full">
+                    <div class="flex space-x-1 w-full mb-1">
+                        <button onclick="quickUpdate(${p.id}, -1)" class="flex-1 bg-gray-100 hover:bg-brown hover:text-white text-[10px] py-1 rounded font-bold">-</button>
+                        <button onclick="quickUpdate(${p.id}, 1)" class="flex-1 bg-gray-100 hover:bg-brown hover:text-white text-[10px] py-1 rounded font-bold">+</button>
+                    </div>
+
+                    <div class="text-center border-t border-gray-100 pt-1">
+                        <span class="font-bold font-mono text-base text-brown">${Math.floor(p.price).toLocaleString()}₩</span>
+                    </div>
+                </div>
+            </div> `).join('');
+    }
+
+    async function quickUpdate(id, change) {
+        const display = document.getElementById(`display-${id}`);
+        let val = parseInt(display.innerText) + change;
+        if(val < 0) val = 0;
+        display.innerText = val;
+
+        try {
+            await fetch('/api/staff/stock', {
+                method: 'POST', headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ productId: id, quantity: val })
+            });
+            addLog(`${change > 0 ? '재고 추가' : '판매 완료'} : 상품 #${id}`);
+        } catch(e) { console.error("Stock Update Error"); }
+    }
+
+// --- 4. ORDERS LOGIC (FIXED & FINAL) ---
+    async function loadOrders() {
+        const list = document.getElementById('order-list');
+        try {
+            const res = await fetch('/api/orders'); 
+            const allOrders = await res.json();
+
+            // 1. FILTER: Hide Archived orders from the screen
+            const orders = allOrders.filter(o => o.archived !== true && o.isArchived !== true && o.items && o.items.length > 0);
+            if(orders.length === 0) {
+                list.innerHTML = '<div class="text-gray-400 text-sm text-center py-4">새로운 예약이 없습니다.</div>';
+                return;
+            }
+
+            list.innerHTML = orders.map(order => {
+                
+                // 2. SAFE ITEM RENDERING (Prevents invisible cards)
+                let itemsHtml = '';
+                if (order.items && order.items.length > 0) {
+                    itemsHtml = order.items.map(i =>
+                        `<span class="inline-flex items-center bg-white/80 border border-gray-200 rounded px-2 py-1 mr-2 mb-2">
+                            <span class="text-black font-bold text-sm mr-2">${i.product ? i.product.name : 'Unknown'}</span>
+                            <span class="font-mono text-sm text-brown font-black bg-gray-100 px-1 rounded">x${i.quantity}</span>
+                        </span>`
+                    ).join('');
+                } else {
+                    itemsHtml = `<div class="bg-red-100 text-red-600 font-bold p-2 rounded mb-2">⚠️ 아이템 로딩 실패 (데이터 확인 필요)</div>`;
+                }
+
+                // DATE & TIME
+                const dateObj = new Date(order.orderDate);
+                const timeStr = dateObj.toLocaleTimeString('ko-KR', { hour: '2-digit', minute:'2-digit', hour12: false });
+
+                // STATUS LOGIC
+                let cardClass = 'bg-white border-gray-200'; // Default
+                let statusBadge = '';
+                let actionButtons = '';
+
+                // --- STATE 1: PENDING (New Request) ---
+                if (order.status === 'PENDING') {
+                    cardClass = 'bg-red-50 border-red-500 border-2 shadow-xl'; 
+                    statusBadge = `<div class="bg-red-600 text-white text-xs px-2 py-1 rounded font-bold animate-pulse">🔔 재고 확인 필요</div>`;
+                    actionButtons = `
+                        <div class="grid grid-cols-2 gap-2 mt-3">
+                            <button onclick="cancelOrder(${order.id})" class="bg-white border border-red-200 text-red-500 py-3 rounded font-bold hover:bg-red-50">🚫 재고 없음 (취소)</button>
+                            <button onclick="confirmStock(${order.id})" class="bg-red-600 text-white py-3 rounded font-bold hover:bg-red-700 shadow-md">✅ 재고 있음 (확인)</button>
+                        </div>`;
+                } 
+                // --- STATE 2: PROCESSING (Confirmed) ---
+                else if (order.status === 'PROCESSING') {
+                    cardClass = 'bg-yellow-50 border-yellow-400 border-2'; 
+                    statusBadge = `<div class="bg-yellow-400 text-black text-xs px-2 py-1 rounded font-bold">💰 입금 대기중</div>`;
+                    actionButtons = `
+                         <button onclick="completePayment(${order.id})" class="w-full mt-3 bg-black text-white py-3 rounded font-bold hover:bg-gray-800 shadow-md">💸 입금 확인 완료</button>`;
+                }
+                // --- STATE 3: COMPLETED/CANCELLED ---
+                else {
+                    const isCancelled = order.status === 'CANCELLED';
+                    cardClass = isCancelled ? 'bg-gray-50 border-gray-200 opacity-70' : 'bg-white border-gray-200';
+                    statusBadge = isCancelled 
+                        ? `<span class="bg-gray-200 text-gray-500 text-xs px-2 py-1 rounded font-bold">취소됨</span>`
+                        : `<span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded font-bold">예약 확정</span>`;
+
+                    // Archive Button
+                    actionButtons = `
+                        <button onclick="archiveOrder(${order.id})" class="w-full mt-2 text-[11px] bg-gray-100 text-gray-400 py-2 rounded hover:bg-gray-200 font-bold transition">
+                            목록에서 숨기기
+                        </button>`;
+                }
+
+                // O/X OPTIONS
+                const isTakeaway = order.takeaway;
+                const isCut = order.wantsCut;
+                const takeawayUI = isTakeaway ? `<span class="text-blue-600 font-bold text-xs border border-blue-200 bg-blue-50 px-1 rounded">포장 O</span>` : '';
+                const cutUI = isCut ? `<span class="text-red-500 font-bold text-xs border border-red-200 bg-red-50 px-1 rounded">컷팅 O</span>` : '';
+
+                return `
+                    <div class="${cardClass} p-5 rounded-xl transition-all duration-300">
+                        <div class="flex justify-between items-start mb-3 border-b border-black/5 pb-2">
+                            <div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="text-lg font-black text-brown">${order.customer ? order.customer.name : 'Guest'}</span>
+                                    ${statusBadge}
+                                </div>
+                                <div class="text-xs text-gray-500 font-mono">${order.customer ? order.customer.phone : ''}</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-mono font-bold text-lg">₩${order.totalAmount.toLocaleString()}</div>
+                                <div class="text-[10px] text-gray-400">픽업: ${order.pickupTime}</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">${itemsHtml}</div>
+
+                        <div class="flex gap-2 mb-2">
+                            ${takeawayUI} ${cutUI}
+                        </div>
+
+                        ${order.memo ? `<div class="text-xs bg-yellow-100/50 p-2 rounded text-gray-700 mb-2">📝 ${order.memo}</div>` : ''}
+
+                        ${actionButtons}
+                    </div>
+                `;
+            }).join('');
+        } catch(e) { console.error(e); }
+    }
+
+    // --- 5. NEW PRODUCT LOGIC ---
+    function openProductModal() { document.getElementById('product-modal').classList.remove('hidden'); }
+    function closeProductModal() { document.getElementById('product-modal').classList.add('hidden'); }
+
+    async function createNewProduct() {
+        const name = document.getElementById('new-name').value;
+        const price = document.getElementById('new-price').value;
+        const category = document.getElementById('new-category').value;
+        const stock = document.getElementById('new-stock').value;
+        const imageInput = document.getElementById('new-image');
+
+        if(!name || !price) return;
+
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('price', price);
+        formData.append('category', category);
+        formData.append('stockQuantity', stock);
+        if(imageInput.files[0]) formData.append('image', imageInput.files[0]);
+
+        await fetch('/api/products', { method: 'POST', body: formData });
+        closeProductModal();
+        loadInventory();
+        addLog(`신규 상품 등록: ${name}`);
+    }
+
+    // --- 6. TRANSACTION LOGIC ---
+    async function processTransaction() {
+        const phone = document.getElementById('phone').value;
+
+        // 1. STRIP COMMAS (Convert "13,300" -> "13300")
+        // This allows staff to see commas while typing, but sends a pure number to the server
+        const rawAmount = document.getElementById('amount').value.replace(/,/g, '');
+        const amount = rawAmount;
+
+        const method = document.getElementById('paymentMethod').value;
+        const usePoints = document.getElementById('usePoints').value || 0;
+        const msg = document.getElementById('pointMsg');
+
+        if(!phone || !amount) {
+            alert("핸드폰 번호와 금액을 입력해주세요.");
+            return;
+        }
+
+        const payload = {
+            phoneNumber: phone,
+            totalAmount: parseFloat(amount),
+            paymentMethod: method,
+            pointsToUse: parseInt(usePoints)
+        };
+
+        try {
+            const res = await fetch('/api/points/pay', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(payload)
+            });
+
+            if (res.ok) {
+                const text = await res.text(); // Read successful response
+
+                msg.innerText = "처리 완료!";
+                msg.classList.remove('text-danger');
+                msg.classList.add('text-success');
+
+                // Log includes points used
+                let logMsg = `결제: ₩${parseInt(amount).toLocaleString()} (${method})`;
+                if (usePoints > 0) logMsg += ` | 포인트 사용: -${usePoints}`;
+                addLog(logMsg);
+
+                // --- 2. CLEAR & FOCUS (This is the part you were asking about) ---
+                document.getElementById('amount').value = '';
+                document.getElementById('phone').value = '';
+                document.getElementById('usePoints').value = '';
+
+                // This forces the blinking cursor back to the Phone box
+                // so staff can scan the next customer immediately without clicking.
+                document.getElementById('phone').focus();
+
+                setTimeout(() => msg.innerText = '', 3000);
+            } else {
+                // --- 3. ERROR HANDLING (Updated to read JSON) ---
+                // Because Java now sends Map.of("error", "..."), we must read it as JSON
+                try {
+                    const errData = await res.json();
+                    msg.innerText = errData.error || "결제 실패";
+                } catch(e) {
+                    // Fallback if Java sends plain text
+                    msg.innerText = "시스템 오류";
+                }
+                msg.classList.add('text-danger');
+            }
+        } catch(e) {
+            console.error(e);
+            msg.innerText = "시스템 연결 오류!";
+        }
+    }
+
+    // --- 7. UTILS ---
+    function addLog(text) {
+        const logs = document.getElementById('logs');
+        const now = new Date().toLocaleTimeString('en-US', {hour12:false, hour:'2-digit', minute:'2-digit'});
+        logs.insertAdjacentHTML('afterbegin', `<div class="text-[10px] text-gray-500 font-mono border-l-2 border-black pl-2 mb-2"><span class="opacity-50">${now}</span> ${text}</div>`);
+    }
+
+    async function deleteProduct(id) {
+        if(!confirm("삭제하시겠습니까?")) return;
+        await fetch(`/api/products/${id}`, { method: 'DELETE' });
+        loadInventory();
+    }
+
+    // --- FIXED SCOPE: Archive needs to be global ---
+    async function archiveOrder(id) {
+        if(!confirm("목록에서 숨기시겠습니까?")) return;
+        try {
+            const res = await fetch(`/api/orders/${id}/archive`, { method: 'PUT' });
+            if(res.ok) loadOrders();
+        } catch(e) { console.error(e); }
+    }
+
+    // --- 8. INITIALIZATION ---
+    document.addEventListener('DOMContentLoaded', () => {
+        loadStatus();
+        loadInventory();
+        loadOrders();
+        setInterval(loadOrders, 30000);
+
+        // Enter Key Handlers
+        document.getElementById('phone')?.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") { e.preventDefault(); document.getElementById('amount').focus(); }
+        });
+        document.getElementById('amount')?.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") { e.preventDefault(); processTransaction(); }
+        });
+    });
+
+    // --- 9. NEW RESERVATION ACTIONS ---
+
+    // A. Staff Confirms Stock (PENDING -> PROCESSING)
+    async function confirmStock(id) {
+        if(!confirm("재고 확인을 완료했습니까? 고객에게 입금 안내가 뜹니다.")) return;
+        try {
+            const res = await fetch(`/api/orders/${id}/confirm`, { method: 'PUT' });
+            if(res.ok) {
+                loadOrders(); // Refresh immediately
+                // Stop alarm sound if playing
+                document.getElementById('alarm-sound').pause();
+                document.getElementById('alarm-sound').currentTime = 0;
+            }
+        } catch(e) { alert("Error confirming order"); }
+    }
+
+    // B. Staff Confirms Payment (PROCESSING -> COMPLETED)
+    async function completePayment(id) {
+        if(!confirm("입금이 확인되었습니까?")) return;
+        try {
+            const res = await fetch(`/api/orders/${id}/complete`, { method: 'PUT' });
+            if(res.ok) loadOrders();
+        } catch(e) { alert("Error completing order"); }
+    }
+
+    // C. Cancel Order (PENDING -> CANCELLED)
+    async function cancelOrder(id) {
+        if(!confirm("재고 부족으로 주문을 취소하시겠습니까?")) return;
+        try {
+            const res = await fetch(`/api/orders/${id}/cancel`, { method: 'POST' }); // Using POST for cancel as per your controller
+            if(res.ok) loadOrders();
+        } catch(e) { alert("Error cancelling order"); }
+    }
+
+    // --- 10. ALARM SYSTEM ---
+
+    function enableAlarm() {
+        const sound = document.getElementById('alarm-sound');
+        sound.play().then(() => {
+            sound.pause();
+            document.getElementById('alarm-btn').style.display = 'none'; // Hide button after clicking
+        });
+    }
+
+    let lastPendingCount = 0;
+
+    // Check for new orders every 5 seconds
+    setInterval(async () => {
+        try {
+            const res = await fetch('/api/orders/pending-count');
+            if(res.ok) {
+                const count = await res.json();
+                if(count > lastPendingCount) {
+                    // NEW ORDER ARRIVED!
+                    document.getElementById('alarm-sound').play();
+                    loadOrders(); // Auto refresh the list
+                }
+                lastPendingCount = count;
+            }
+        } catch(e) { console.log("Polling error"); }
+    }, 5000);
+</script>
+
+</body>
+
+</html>

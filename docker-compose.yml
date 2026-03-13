@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  thebaker-java-backend:
+    build:
+      context: ./thebaker
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    # Mounts the Java Spring Boot application
+
+  thebaker-ai-backend:
+    build:
+      context: ./thebaker-ai
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+
+  thebaker-ai-frontend:
+    build:
+      context: ./thebaker-ai/frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - thebaker-ai-backend
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000

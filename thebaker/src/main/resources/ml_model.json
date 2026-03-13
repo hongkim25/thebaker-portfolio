@@ -1,0 +1,940 @@
+{
+    "SANDWICH A": {
+        "base_bias": 12.6,
+        "weights": {
+            "day_Monday": 1.13,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": -1.16,
+            "day_Thursday": -0.0,
+            "day_Friday": -0.0,
+            "day_Saturday": -2.54,
+            "day_Sunday": 2.57,
+            "is_rain": -0.62,
+            "temp": 0.05
+        },
+        "waste_risk": 0.0,
+        "avg_made": 14.1
+    },
+    "SANDWICH B": {
+        "base_bias": 11.1,
+        "weights": {
+            "day_Monday": 2.2,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": 0.29,
+            "day_Thursday": -0.0,
+            "day_Friday": -5.24,
+            "day_Saturday": -1.05,
+            "day_Sunday": 3.79,
+            "is_rain": 0.14,
+            "temp": 0.05
+        },
+        "waste_risk": 0.0,
+        "avg_made": 13.9
+    },
+    "SANDWICH C": {
+        "base_bias": 11.94,
+        "weights": {
+            "day_Monday": 0.86,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -1.21,
+            "day_Thursday": -0.0,
+            "day_Friday": -2.38,
+            "day_Saturday": 0.0,
+            "day_Sunday": 2.73,
+            "is_rain": -0.19,
+            "temp": 0.04
+        },
+        "waste_risk": 0.0,
+        "avg_made": 13.4
+    },
+    "SANDWICH D": {
+        "base_bias": 9.62,
+        "weights": {
+            "day_Monday": 0.98,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": 0.25,
+            "day_Thursday": 0.0,
+            "day_Friday": -2.87,
+            "day_Saturday": 0.36,
+            "day_Sunday": 1.28,
+            "is_rain": -0.19,
+            "temp": -0.02
+        },
+        "waste_risk": 0.1,
+        "avg_made": 9.8
+    },
+    "COFFEE ICE": {
+        "base_bias": 8.11,
+        "weights": {
+            "day_Monday": -0.51,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -2.58,
+            "day_Thursday": 0.4,
+            "day_Friday": 0.42,
+            "day_Saturday": 3.64,
+            "day_Sunday": -1.38,
+            "is_rain": -0.28,
+            "temp": 0.38
+        },
+        "waste_risk": 0.0,
+        "avg_made": 14.8
+    },
+    "BREAD A": {
+        "base_bias": 17.65,
+        "weights": {
+            "day_Monday": -0.78,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -0.97,
+            "day_Thursday": 0.0,
+            "day_Friday": 0.0,
+            "day_Saturday": 0.0,
+            "day_Sunday": 1.76,
+            "is_rain": 1.74,
+            "temp": -0.04
+        },
+        "waste_risk": 0.0,
+        "avg_made": 17.0
+    },
+    "BREAD B": {
+        "base_bias": 8.74,
+        "weights": {
+            "day_Monday": -0.15,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -0.95,
+            "day_Thursday": 0.0,
+            "day_Friday": 0.0,
+            "day_Saturday": 0.0,
+            "day_Sunday": 1.1,
+            "is_rain": -0.05,
+            "temp": 0.04
+        },
+        "waste_risk": 0.1,
+        "avg_made": 9.0
+    },
+    "BREAD C": {
+        "base_bias": 4.67,
+        "weights": {
+            "day_Monday": 0.94,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": 0.14,
+            "day_Thursday": -2.73,
+            "day_Friday": 0.0,
+            "day_Saturday": 0.0,
+            "day_Sunday": 1.65,
+            "is_rain": 0.26,
+            "temp": 0.01
+        },
+        "waste_risk": 0.0,
+        "avg_made": 5.9
+    },
+    "BREAD D": {
+        "base_bias": 8.71,
+        "weights": {
+            "day_Monday": -0.8,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -1.77,
+            "day_Thursday": -0.0,
+            "day_Friday": 0.0,
+            "day_Saturday": -0.39,
+            "day_Sunday": 2.96,
+            "is_rain": 0.39,
+            "temp": 0.06
+        },
+        "waste_risk": 0.0,
+        "avg_made": 9.8
+    },
+    "BREAD E": {
+        "base_bias": 15.64,
+        "weights": {
+            "day_Monday": -5.16,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": -5.33,
+            "day_Thursday": -5.52,
+            "day_Friday": 19.39,
+            "day_Saturday": 0.0,
+            "day_Sunday": -3.38,
+            "is_rain": -0.25,
+            "temp": -0.01
+        },
+        "waste_risk": 0.1,
+        "avg_made": 10.8
+    },
+    "BREAD F": {
+        "base_bias": 5.08,
+        "weights": {
+            "day_Monday": 2.75,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": 2.33,
+            "day_Thursday": -1.95,
+            "day_Friday": -2.92,
+            "day_Saturday": -3.85,
+            "day_Sunday": 3.64,
+            "is_rain": -0.85,
+            "temp": -0.01
+        },
+        "waste_risk": 0.1,
+        "avg_made": 7.3
+    },
+    "SANDWICH E": {
+        "base_bias": 6.81,
+        "weights": {
+            "day_Monday": -0.27,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": -0.72,
+            "day_Thursday": 0.0,
+            "day_Friday": 0.0,
+            "day_Saturday": 0.0,
+            "day_Sunday": 0.99,
+            "is_rain": -0.45,
+            "temp": 0.04
+        },
+        "waste_risk": 0.0,
+        "avg_made": 7.3
+    },
+    "BAGEL A": {
+        "base_bias": 14.54,
+        "weights": {
+            "day_Monday": -6.71,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": -7.29,
+            "day_Thursday": -0.0,
+            "day_Friday": 20.46,
+            "day_Saturday": 0.0,
+            "day_Sunday": -6.46,
+            "is_rain": -0.07,
+            "temp": -0.0
+        },
+        "waste_risk": 0.1,
+        "avg_made": 7.7
+    },
+
+    "COFFEE HOT": {
+        "base_bias": 12.95,
+        "weights": {
+            "day_Monday": -0.85,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -1.4,
+            "day_Thursday": 0.41,
+            "day_Friday": -0.13,
+            "day_Saturday": 2.78,
+            "day_Sunday": -0.81,
+            "is_rain": 0.87,
+            "temp": -0.29
+        },
+        "waste_risk": 0.0,
+        "avg_made": 8.2
+    },
+
+    "BAGEL F": {
+        "base_bias": 7.43,
+        "weights": {
+            "day_Monday": 2.51,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": 2.53,
+            "day_Thursday": 0.0,
+            "day_Friday": -4.22,
+            "day_Saturday": -4.16,
+            "day_Sunday": 3.33,
+            "is_rain": -0.05,
+            "temp": -0.03
+        },
+        "waste_risk": 0.1,
+        "avg_made": 9.3
+    },
+
+    "BAGEL B": {
+        "base_bias": 13.72,
+        "weights": {
+            "day_Monday": -6.36,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -6.2,
+            "day_Thursday": -3.3,
+            "day_Friday": 21.39,
+            "day_Saturday": 0.0,
+            "day_Sunday": -5.54,
+            "is_rain": 0.08,
+            "temp": -0.02
+        },
+        "waste_risk": 0.1,
+        "avg_made": 7.3
+    },
+
+    "BAGEL C": {
+        "base_bias": 8.17,
+        "weights": {
+            "day_Monday": 0.13,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": 0.16,
+            "day_Thursday": 2.56,
+            "day_Friday": -3.71,
+            "day_Saturday": -0.0,
+            "day_Sunday": 0.85,
+            "is_rain": 0.04,
+            "temp": -0.03
+        },
+        "waste_risk": 0.1,
+        "avg_made": 7.8
+    },
+
+    "BAGEL D": {
+        "base_bias": 8.48,
+        "weights": {
+            "day_Monday": -0.04,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -0.23,
+            "day_Thursday": 0.0,
+            "day_Friday": 0.0,
+            "day_Saturday": 0.0,
+            "day_Sunday": 0.27,
+            "is_rain": -0.15,
+            "temp": -0.02
+        },
+        "waste_risk": 0.1,
+        "avg_made": 8.0
+    },
+
+    "LATTE ICE": {
+        "base_bias": 2.68,
+        "weights": {
+            "day_Monday": 0.3,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -0.43,
+            "day_Thursday": -0.53,
+            "day_Friday": 0.36,
+            "day_Saturday": 0.74,
+            "day_Sunday": -0.44,
+            "is_rain": -0.36,
+            "temp": 0.1
+        },
+        "waste_risk": 0.0,
+        "avg_made": 4.4
+    },
+
+    "DRINK B": {
+        "base_bias": 1.41,
+        "weights": {
+            "day_Monday": -0.11,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -0.15,
+            "day_Thursday": 0.09,
+            "day_Friday": 0.04,
+            "day_Saturday": 0.06,
+            "day_Sunday": 0.06,
+            "is_rain": -0.2,
+            "temp": 0.01
+        },
+        "waste_risk": 0.0,
+        "avg_made": 1.4
+    },
+    "DRINK C": {
+        "base_bias": 1.64,
+        "weights": {
+            "day_Monday": -0.21,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": -0.27,
+            "day_Thursday": -0.17,
+            "day_Friday": 0.08,
+            "day_Saturday": 0.53,
+            "day_Sunday": 0.04,
+            "is_rain": -0.17,
+            "temp": -0.0
+        },
+        "waste_risk": 0.0,
+        "avg_made": 1.6
+    },
+    "LATTE HOT": {
+        "base_bias": 1.72,
+        "weights": {
+            "day_Monday": -0.17,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": -0.18,
+            "day_Thursday": 0.01,
+            "day_Friday": 0.13,
+            "day_Saturday": 0.28,
+            "day_Sunday": -0.08,
+            "is_rain": -0.21,
+            "temp": -0.02
+        },
+        "waste_risk": 0.0,
+        "avg_made": 1.5
+    },
+
+
+    "DRINK D": {
+        "base_bias": 1.71,
+        "weights": {
+            "day_Monday": -0.57,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": -0.52,
+            "day_Thursday": 0.97,
+            "day_Friday": -0.03,
+            "day_Saturday": 0.25,
+            "day_Sunday": -0.11,
+            "is_rain": -0.44,
+            "temp": 0.01
+        },
+        "waste_risk": 0.0,
+        "avg_made": 1.9
+    },
+    "SANDWICH I": {
+        "base_bias": 9.64,
+        "weights": {
+            "day_Monday": -8.7,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -10.7,
+            "day_Thursday": 6.06,
+            "day_Friday": 7.9,
+            "day_Saturday": 15.53,
+            "day_Sunday": -10.09,
+            "is_rain": 1.29,
+            "temp": 0.1
+        },
+        "waste_risk": 0.0,
+        "avg_made": 20.2
+    },
+    "SANDWICH J": {
+        "base_bias": 10.38,
+        "weights": {
+            "day_Monday": 0.0,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": -11.58,
+            "day_Thursday": 0.79,
+            "day_Friday": 1.21,
+            "day_Saturday": 9.58,
+            "day_Sunday": 0.0,
+            "is_rain": -0.14,
+            "temp": 0.14
+        },
+        "waste_risk": 0.1,
+        "avg_made": 16.0
+    },
+    "SANDWICH L": {
+        "base_bias": 5.81,
+        "weights": {
+            "day_Monday": 0.0,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": -7.14,
+            "day_Thursday": 0.75,
+            "day_Friday": 2.46,
+            "day_Saturday": 5.81,
+            "day_Sunday": -1.89,
+            "is_rain": 1.0,
+            "temp": 0.13
+        },
+        "waste_risk": 0.0,
+        "avg_made": 11.3
+    },
+    "SANDWICH K": {
+        "base_bias": 39.24,
+        "weights": {
+            "day_Monday": 110.71,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -39.35,
+            "day_Thursday": -26.6,
+            "day_Friday": -25.39,
+            "day_Saturday": -19.37,
+            "day_Sunday": 0.0,
+            "is_rain": 1.06,
+            "temp": 0.03
+        },
+        "waste_risk": 0.0,
+        "avg_made": 17.0
+    },
+
+    "BREAD Y": {
+        "base_bias": 3.0,
+        "weights": {
+            "day_Monday": 0.0,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": 0.0,
+            "day_Thursday": -0.04,
+            "day_Friday": -0.13,
+            "day_Saturday": 0.17,
+            "day_Sunday": -0.0,
+            "is_rain": 0.12,
+            "temp": -0.0
+        },
+        "waste_risk": 0.0,
+        "avg_made": 2.9
+    },
+    "BREAD X": {
+        "base_bias": 4.95,
+        "weights": {
+            "day_Monday": -0.73,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -0.46,
+            "day_Thursday": 0.46,
+            "day_Friday": -0.02,
+            "day_Saturday": 1.91,
+            "day_Sunday": -1.17,
+            "is_rain": 0.34,
+            "temp": 0.0
+        },
+        "waste_risk": 0.2,
+        "avg_made": 5.5
+    },
+    "BREAD W": {
+        "base_bias": 6.97,
+        "weights": {
+            "day_Monday": 5.1,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": 0.0,
+            "day_Thursday": -2.59,
+            "day_Friday": -2.38,
+            "day_Saturday": -0.13,
+            "day_Sunday": 0.0,
+            "is_rain": 0.35,
+            "temp": -0.01
+        },
+        "waste_risk": 0.1,
+        "avg_made": 5.1
+    },
+    "BREAD V": {
+        "base_bias": 2.56,
+        "weights": {
+            "day_Monday": 0.0,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -0.0,
+            "day_Thursday": -0.12,
+            "day_Friday": 0.0,
+            "day_Saturday": 0.12,
+            "day_Sunday": 0.0,
+            "is_rain": 0.21,
+            "temp": 0.0
+        },
+        "waste_risk": 0.1,
+        "avg_made": 2.5
+    },
+    "BREAD U": {
+        "base_bias": 1.68,
+        "weights": {
+            "day_Monday": -0.76,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": 0.0,
+            "day_Thursday": 0.03,
+            "day_Friday": 0.02,
+            "day_Saturday": 0.7,
+            "day_Sunday": 0.0,
+            "is_rain": 0.08,
+            "temp": 0.01
+        },
+        "waste_risk": 0.0,
+        "avg_made": 1.9
+    },
+    "BREAD T": {
+        "base_bias": 3.1,
+        "weights": {
+            "day_Monday": 0.0,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": 0.0,
+            "day_Thursday": 0.16,
+            "day_Friday": -0.29,
+            "day_Saturday": 0.13,
+            "day_Sunday": 0.0,
+            "is_rain": 0.21,
+            "temp": 0.0
+        },
+        "waste_risk": 0.0,
+        "avg_made": 3.1
+    },
+    "DRINK A": {
+        "base_bias": 1.65,
+        "weights": {
+            "day_Monday": -0.14,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": -0.17,
+            "day_Thursday": -0.12,
+            "day_Friday": 0.76,
+            "day_Saturday": -0.13,
+            "day_Sunday": -0.19,
+            "is_rain": -0.09,
+            "temp": -0.0
+        },
+        "waste_risk": 0.0,
+        "avg_made": 1.6
+    },
+    "BREAD S": {
+        "base_bias": 5.05,
+        "weights": {
+            "day_Monday": 0.0,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": 0.0,
+            "day_Thursday": -0.58,
+            "day_Friday": -0.33,
+            "day_Saturday": 0.91,
+            "day_Sunday": -0.0,
+            "is_rain": 0.21,
+            "temp": -0.03
+        },
+        "waste_risk": 0.0,
+        "avg_made": 4.3
+    },
+    "BREAD R": {
+        "base_bias": 4.1,
+        "weights": {
+            "day_Monday": -0.12,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -0.05,
+            "day_Thursday": -0.66,
+            "day_Friday": -0.09,
+            "day_Saturday": 0.7,
+            "day_Sunday": 0.22,
+            "is_rain": 0.86,
+            "temp": 0.0
+        },
+        "waste_risk": 0.2,
+        "avg_made": 4.1
+    },
+    "BREAD Q": {
+        "base_bias": 3.75,
+        "weights": {
+            "day_Monday": -0.15,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -0.5,
+            "day_Thursday": -0.45,
+            "day_Friday": 0.01,
+            "day_Saturday": 1.46,
+            "day_Sunday": -0.37,
+            "is_rain": -0.18,
+            "temp": 0.0
+        },
+        "waste_risk": 0.1,
+        "avg_made": 3.7
+    },
+    "BREAD AA": {
+        "base_bias": 3.44,
+        "weights": {
+            "day_Monday": -0.27,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": 0.46,
+            "day_Thursday": -0.25,
+            "day_Friday": -0.33,
+            "day_Saturday": 0.61,
+            "day_Sunday": -0.22,
+            "is_rain": 0.3,
+            "temp": 0.0
+        },
+        "waste_risk": 0.1,
+        "avg_made": 3.5
+    },
+    "BREAD BB": {
+        "base_bias": 4.27,
+        "weights": {
+            "day_Monday": 0.0,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -0.0,
+            "day_Thursday": -0.8,
+            "day_Friday": 0.29,
+            "day_Saturday": 0.52,
+            "day_Sunday": 0.0,
+            "is_rain": 0.13,
+            "temp": -0.03
+        },
+        "waste_risk": 0.1,
+        "avg_made": 3.7
+    },
+    "BREAD CC": {
+        "base_bias": 0.45,
+        "weights": {
+            "day_Monday": -0.11,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": 0.79,
+            "day_Thursday": -2.55,
+            "day_Friday": 0.0,
+            "day_Saturday": 0.0,
+            "day_Sunday": 1.86,
+            "is_rain": 0.0,
+            "temp": 0.12
+        },
+        "waste_risk": 0.1,
+        "avg_made": 1.4
+    },
+    "BAGEL E": {
+        "base_bias": 1.0,
+        "weights": {
+            "day_Monday": 0.0,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": 0.0,
+            "day_Thursday": 0.0,
+            "day_Friday": 0.0,
+            "day_Saturday": 0.0,
+            "day_Sunday": 0.0,
+            "is_rain": 0.0,
+            "temp": 0.0
+        },
+        "waste_risk": 0.0,
+        "avg_made": 1.0
+    },
+    "BREAD DD": {
+        "base_bias": 7.68,
+        "weights": {
+            "day_Monday": 1.36,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -1.59,
+            "day_Thursday": 0.0,
+            "day_Friday": 0.0,
+            "day_Saturday": 0.0,
+            "day_Sunday": 0.24,
+            "is_rain": -0.33,
+            "temp": 0.0
+        },
+        "waste_risk": 0.4,
+        "avg_made": 6.9
+    },
+    "BREAD Z": {
+        "base_bias": 12.16,
+        "weights": {
+            "day_Monday": 1.01,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -0.4,
+            "day_Thursday": 0.0,
+            "day_Friday": 0.0,
+            "day_Saturday": 0.0,
+            "day_Sunday": -0.61,
+            "is_rain": -4.49,
+            "temp": -0.11
+        },
+        "waste_risk": 0.0,
+        "avg_made": 9.9
+    },
+    "BAGEL G": {
+        "base_bias": 4.1,
+        "weights": {
+            "day_Monday": -0.73,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": -0.65,
+            "day_Thursday": 0.0,
+            "day_Friday": 0.89,
+            "day_Saturday": 0.0,
+            "day_Sunday": 0.5,
+            "is_rain": 1.38,
+            "temp": -0.06
+        },
+        "waste_risk": 0.5,
+        "avg_made": 3.4
+    },
+    "BAGEL H": {
+        "base_bias": 11.76,
+        "weights": {
+            "day_Monday": -0.31,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": 0.19,
+            "day_Thursday": 0.0,
+            "day_Friday": 0.0,
+            "day_Saturday": 0.0,
+            "day_Sunday": 0.12,
+            "is_rain": -6.29,
+            "temp": -0.05
+        },
+        "waste_risk": 0.2,
+        "avg_made": 10.2
+    },
+    "SANDWICH F": {
+        "base_bias": 5.61,
+        "weights": {
+            "day_Monday": 0.0,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": -3.12,
+            "day_Thursday": 0.75,
+            "day_Friday": -0.18,
+            "day_Saturday": 2.55,
+            "day_Sunday": 0.0,
+            "is_rain": -1.1,
+            "temp": -0.25
+        },
+        "waste_risk": 0.4,
+        "avg_made": 5.2
+    },
+    "BREAD H": {
+        "base_bias": 8.8,
+        "weights": {
+            "day_Monday": 0.0,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": -2.25,
+            "day_Thursday": -1.97,
+            "day_Friday": -0.34,
+            "day_Saturday": 4.57,
+            "day_Sunday": 0.0,
+            "is_rain": -4.91,
+            "temp": -0.4
+        },
+        "waste_risk": 0.2,
+        "avg_made": 6.8
+    },
+    "BREAD G": {
+        "base_bias": 2.67,
+        "weights": {
+            "day_Monday": -0.27,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": -0.46,
+            "day_Thursday": -0.85,
+            "day_Friday": 0.36,
+            "day_Saturday": 0.94,
+            "day_Sunday": 0.28,
+            "is_rain": -0.56,
+            "temp": -0.05
+        },
+        "waste_risk": 1.0,
+        "avg_made": 2.7
+    },
+    "BREAD I": {
+        "base_bias": 3.54,
+        "weights": {
+            "day_Monday": 0.86,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": -0.54,
+            "day_Thursday": -0.29,
+            "day_Friday": 0.06,
+            "day_Saturday": 0.97,
+            "day_Sunday": -1.05,
+            "is_rain": -1.03,
+            "temp": 0.0
+        },
+        "waste_risk": 0.5,
+        "avg_made": 2.9
+    },
+    "BREAD J": {
+        "base_bias": 4.99,
+        "weights": {
+            "day_Monday": 0.0,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -3.32,
+            "day_Thursday": 2.36,
+            "day_Friday": -0.3,
+            "day_Saturday": 1.26,
+            "day_Sunday": 0.0,
+            "is_rain": -0.56,
+            "temp": -0.07
+        },
+        "waste_risk": 0.1,
+        "avg_made": 5.2
+    },
+    "BREAD K": {
+        "base_bias": 3.78,
+        "weights": {
+            "day_Monday": 0.0,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": 0.0,
+            "day_Thursday": -0.7,
+            "day_Friday": -0.03,
+            "day_Saturday": 0.73,
+            "day_Sunday": -0.0,
+            "is_rain": -1.73,
+            "temp": -0.08
+        },
+        "waste_risk": 0.4,
+        "avg_made": 3.2
+    },
+    "BREAD L": {
+        "base_bias": 4.48,
+        "weights": {
+            "day_Monday": 0.0,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -0.0,
+            "day_Thursday": -0.85,
+            "day_Friday": -0.15,
+            "day_Saturday": 1.0,
+            "day_Sunday": 0.0,
+            "is_rain": -1.51,
+            "temp": -0.09
+        },
+        "waste_risk": 0.7,
+        "avg_made": 3.6
+    },
+    "BREAD M": {
+        "base_bias": 4.56,
+        "weights": {
+            "day_Monday": 0.0,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": 0.0,
+            "day_Thursday": 0.38,
+            "day_Friday": -1.3,
+            "day_Saturday": 0.92,
+            "day_Sunday": 0.0,
+            "is_rain": -1.82,
+            "temp": 0.04
+        },
+        "waste_risk": 0.3,
+        "avg_made": 4.1
+    },
+    "BREAD N": {
+        "base_bias": 3.96,
+        "weights": {
+            "day_Monday": 0.0,
+            "day_Tuesday": -0.0,
+            "day_Wednesday": 0.0,
+            "day_Thursday": 0.42,
+            "day_Friday": -0.23,
+            "day_Saturday": -0.19,
+            "day_Sunday": -0.0,
+            "is_rain": 1.35,
+            "temp": 0.08
+        },
+        "waste_risk": 0.2,
+        "avg_made": 4.2
+    },
+    "SANDWICH G": {
+        "base_bias": 4.32,
+        "weights": {
+            "day_Monday": 0.0,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -3.07,
+            "day_Thursday": 0.84,
+            "day_Friday": 0.4,
+            "day_Saturday": 1.83,
+            "day_Sunday": 0.0,
+            "is_rain": 0.65,
+            "temp": 0.06
+        },
+        "waste_risk": 0.2,
+        "avg_made": 4.9
+    },
+    "SANDWICH H": {
+        "base_bias": 4.44,
+        "weights": {
+            "day_Monday": 0.0,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": -0.0,
+            "day_Thursday": -0.57,
+            "day_Friday": -0.54,
+            "day_Saturday": 1.11,
+            "day_Sunday": 0.0,
+            "is_rain": -0.61,
+            "temp": 0.09
+        },
+        "waste_risk": 0.1,
+        "avg_made": 4.4
+    },
+    "BREAD O": {
+        "base_bias": 5.01,
+        "weights": {
+            "day_Monday": 0.0,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": 0.0,
+            "day_Thursday": -1.46,
+            "day_Friday": 0.66,
+            "day_Saturday": 0.79,
+            "day_Sunday": -0.0,
+            "is_rain": 0.34,
+            "temp": -0.04
+        },
+        "waste_risk": 0.6,
+        "avg_made": 4.4
+    },
+    "BREAD P": {
+        "base_bias": 3.6,
+        "weights": {
+            "day_Monday": 0.0,
+            "day_Tuesday": 0.0,
+            "day_Wednesday": 0.0,
+            "day_Thursday": 0.0,
+            "day_Friday": -0.18,
+            "day_Saturday": 0.18,
+            "day_Sunday": 0.0,
+            "is_rain": -2.55,
+            "temp": -0.02
+        },
+        "waste_risk": 0.4,
+        "avg_made": 2.7
+    }
+}
